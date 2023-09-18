@@ -4,10 +4,9 @@ class AppStates {
   AppStates({
     required this.counter,
   });
-  
 }
 
 class InitStates extends AppStates {
-  InitStates({required super.counter});
-
+//  InitStates({required super.counter});
+  InitStates() : super(counter: 0);
 }

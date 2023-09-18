@@ -7,7 +7,8 @@ class AppBlocs extends Bloc<AppEvents, AppStates> {
   AppBlocs() : super(InitStates()) {
     on<Increment>(
       (event, emit) {
-        emit(AppStates(counter: state.counter++));
+        emit(AppStates(counter: state.counter+1));
+        print(state.counter);
       },
     );
   }

@@ -8,5 +8,5 @@ class AppStates {
 
 class InitStates extends AppStates {
 //  InitStates({required super.counter});
-  InitStates() : super(counter: 0);
+  InitStates() : super(counter: 10);
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ulearning_app_bloc/app_blocs.dart';
+import 'package:ulearning_app_bloc/app_events.dart';
 import 'package:ulearning_app_bloc/app_states.dart';
 
 void main() {
@@ -95,7 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           FloatingActionButton(
-            onPressed: _incrementCounter,
+            onPressed: ()=>BlocProvider.of<AppBlocs>(context).add(Increment()),
             tooltip: 'Increment',
             child: const Icon(Icons.add),
           ),

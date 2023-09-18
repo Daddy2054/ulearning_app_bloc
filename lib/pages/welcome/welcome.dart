@@ -1,3 +1,4 @@
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -47,7 +48,7 @@ class _WelcomeState extends State<Welcome> {
                         ),
                         width: 375.w,
                         child: Text(
-                          'Forget about a for of paper all knowledge in one learning!',
+                            "Forget about a for of paper all knowldget in on learning",
                           style: TextStyle(
                             color: Colors.black.withOpacity(0.5),
                             fontSize: 14.sp,
@@ -90,6 +91,22 @@ class _WelcomeState extends State<Welcome> {
                     ],
                   ),
                 ],
+              ),
+              Positioned(
+                bottom: 80.h,
+                left: 150,
+                child: DotsIndicator(
+                  dotsCount: 3,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  decorator: DotsDecorator(
+                      color: Colors.grey,
+                      activeColor: Colors.blue,
+                      size: const Size.square(8.0),
+                      activeSize: const Size(10, 8),
+                      activeShape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      )),
+                ),
               ),
             ],
           ),

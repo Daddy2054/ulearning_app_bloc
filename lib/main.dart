@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key, required this.title});
 
   // This widget is the home page of your application. It is stateful, meaning
@@ -43,25 +43,6 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  void _decrementCounter() {
-    setState(() {
-      _counter--;
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -71,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title: Text(title),
       ),
       body: Center(
         child: BlocBuilder<AppBlocs, AppStates>(
@@ -83,8 +64,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   'You have pushed the button this many times:',
                 ),
                 Text(
-               //   '$_counter',
-               '${BlocProvider.of<AppBlocs>(context).state.counter}',
+                  //   '$_counter',
+                  '${BlocProvider.of<AppBlocs>(context).state.counter}',
                   style: Theme.of(context).textTheme.headlineMedium,
                 ),
               ],
@@ -96,13 +77,15 @@ class _MyHomePageState extends State<MyHomePage> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           FloatingActionButton(
-            onPressed: ()=>BlocProvider.of<AppBlocs>(context).add(Increment()),
+            onPressed: () =>
+                BlocProvider.of<AppBlocs>(context).add(Increment()),
             tooltip: 'Increment',
             child: const Icon(Icons.add),
           ),
           FloatingActionButton(
-            onPressed: _decrementCounter,
-            tooltip: 'Increment',
+            onPressed: () =>
+                BlocProvider.of<AppBlocs>(context).add(Decrement()),
+            tooltip: 'Decrement',
             child: const Icon(Icons.remove),
           ),
         ],

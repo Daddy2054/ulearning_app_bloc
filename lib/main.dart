@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app_bloc/app_blocs.dart';
 import 'package:ulearning_app_bloc/app_events.dart';
 import 'package:ulearning_app_bloc/app_states.dart';
+import 'package:ulearning_app_bloc/pages/welcome/welcome.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,12 +18,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => AppBlocs(),
-      child: MaterialApp(
-        home: const MyHomePage(title: 'Flutter Demo Home Page'),
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
+      child: ScreenUtilInit(
+        builder: (context, child) => MaterialApp(
+          home: const Welcome(),
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            useMaterial3: true,
+          ),
         ),
       ),
     );

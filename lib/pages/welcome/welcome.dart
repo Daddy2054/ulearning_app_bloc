@@ -41,6 +41,11 @@ class _WelcomeState extends State<Welcome> {
                         ),
                       ),
                       Container(
+                        padding: EdgeInsets.only(
+                          left: 30.w,
+                          right: 30.w,
+                        ),
+                        width: 375.w,
                         child: Text(
                           'Forget about a for of paper all knowledge in one learning!',
                           style: TextStyle(
@@ -49,11 +54,43 @@ class _WelcomeState extends State<Welcome> {
                             fontWeight: FontWeight.normal,
                           ),
                         ),
-                      )
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(
+                          top: 100.h,
+                          left: 25.w,
+                          right: 25.w,
+                        ),
+                        width: 325.w,
+                        height: 50.h,
+                        decoration: BoxDecoration(
+                            color: Colors.blue,
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(15.w),
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.1),
+                                spreadRadius: 1,
+                                blurRadius: 2,
+                                offset: const Offset(0, 1),
+                              ),
+                            ]),
+                        child: Center(
+                          child: Text(
+                            'next',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.normal,
+                            ),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ],
-              )
+              ),
             ],
           ),
         ),

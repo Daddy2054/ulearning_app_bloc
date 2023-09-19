@@ -5,6 +5,8 @@ import 'package:ulearning_app_bloc/app_states.dart';
 class AppBlocs extends Bloc<AppEvents, AppStates> {
   // AppBlocs(super.initialState);
   AppBlocs() : super(InitStates()) {
+    print('app bloc');
+
     on<Increment>(
       (event, emit) {
         emit(AppStates(counter: state.counter+1));

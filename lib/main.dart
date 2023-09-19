@@ -20,12 +20,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
     return MultiBlocProvider(
       providers: [
         BlocProvider(
           create: (context) => WelcomeBloc(),
         ),
         BlocProvider(
+          lazy: false,
           create: (context) => AppBlocs(),
         ),
       ],

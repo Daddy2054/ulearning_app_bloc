@@ -2,6 +2,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ulearning_app_bloc/main.dart';
 
 import 'bloc/welcome_bloc.dart';
 import 'bloc/welcome_event.dart';
@@ -32,7 +33,7 @@ class _WelcomeState extends State<Welcome> {
               child: Stack(
                 children: [
                   PageView(
-                      controller: pageController,
+                    controller: pageController,
                     onPageChanged: (index) {
                       state.page = index;
                       BlocProvider.of<WelcomeBloc>(context).add(WelcomeEvent());
@@ -189,26 +190,29 @@ class _WelcomeState extends State<Welcome> {
           ),
         ),
         GestureDetector(
-           onTap: (){
-             //within 0-2 index
-             if(index<3){
+          onTap: () {
+            //within 0-2 index
+            if (index < 3) {
               //animation
-              pageController.animateToPage(
-                  index,
+              pageController.animateToPage(index,
                   duration: const Duration(milliseconds: 500),
-                  curve: Curves.easeIn
+                  curve: Curves.easeIn);
+            } else {
+              //jump to a new page
+              // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SignIn()));
+              //           Global.storageService.setBool(AppConstants.STORAGE_DEVICE_OPEN_FIRST_TIME, true);
+
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => MyHomePage(title: 'title'),
+                ),
               );
 
-             }else{
-
-//               //jump to a new page
-//              // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SignIn()));
-//    //           Global.storageService.setBool(AppConstants.STORAGE_DEVICE_OPEN_FIRST_TIME, true);
-//               print("欢迎页面2");
-//               Navigator.of(context).pushNamedAndRemoveUntil("/sign_in", (route) => false);
-
-             }
-           },
+              // print("欢迎页面2");
+              // Navigator.of(context)
+              //     .pushNamedAndRemoveUntil("/sign_in", (route) => false);
+            }
+          },
           child: Container(
             margin: EdgeInsets.only(top: 100.h, left: 25.w, right: 25.w),
             width: 325.w,

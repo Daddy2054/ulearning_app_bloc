@@ -34,7 +34,7 @@ class _WelcomeState extends State<Welcome> {
                       state.page = index;
                       BlocProvider.of<WelcomeBloc>(context).add(WelcomeEvent());
 
-                      print('index value is $index');
+                 //     print('index value is $index');
                     },
                     children: [
                       _page(

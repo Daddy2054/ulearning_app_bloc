@@ -28,13 +28,14 @@ class MyApp extends StatelessWidget {
           create: (context) => WelcomeBloc(),
         ),
         BlocProvider(
-          lazy: false,
+        //  lazy: false,
           create: (context) => AppBlocs(),
         ),
       ],
       child: ScreenUtilInit(
         builder: (context, child) => MaterialApp(
-          home: const Welcome(),
+          home:  const Welcome(),
+          routes: {'/myHomePage':(context)=>const MyHomePage(title: 'title'),},
           title: 'Flutter Demo',
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),

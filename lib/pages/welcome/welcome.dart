@@ -2,7 +2,6 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ulearning_app_bloc/main.dart';
 
 import 'bloc/welcome_bloc.dart';
 import 'bloc/welcome_event.dart';
@@ -62,72 +61,7 @@ class _WelcomeState extends State<Welcome> {
                           "Always Fascinated Learning",
                           "Anywhere, anytime. The time is at our discrtion so study whenver you want",
                           "assets/images/man.png"),
-                      //   Column(
-                      //     children: [
-                      //       SizedBox(
-                      //         width: 345.w,
-                      //         height: 345.w,
-                      //         child: const Text('image one'),
-                      //       ),
-                      //       Container(
-                      //         child: Text(
-                      //           'First See Learning',
-                      //           style: TextStyle(
-                      //             color: Colors.black,
-                      //             fontSize: 24.sp,
-                      //             fontWeight: FontWeight.normal,
-                      //           ),
-                      //         ),
-                      //       ),
-                      //       Container(
-                      //         padding: EdgeInsets.only(
-                      //           left: 30.w,
-                      //           right: 30.w,
-                      //         ),
-                      //         width: 375.w,
-                      //         child: Text(
-                      //           "Forget about a for of paper all knowldget in on learning",
-                      //           style: TextStyle(
-                      //             color: Colors.black.withOpacity(0.5),
-                      //             fontSize: 14.sp,
-                      //             fontWeight: FontWeight.normal,
-                      //           ),
-                      //         ),
-                      //       ),
-                      //       Container(
-                      //         margin: EdgeInsets.only(
-                      //           top: 100.h,
-                      //           left: 25.w,
-                      //           right: 25.w,
-                      //         ),
-                      //         width: 325.w,
-                      //         height: 50.h,
-                      //         decoration: BoxDecoration(
-                      //             color: Colors.blue,
-                      //             borderRadius: BorderRadius.all(
-                      //               Radius.circular(15.w),
-                      //             ),
-                      //             boxShadow: [
-                      //               BoxShadow(
-                      //                 color: Colors.grey.withOpacity(0.1),
-                      //                 spreadRadius: 1,
-                      //                 blurRadius: 2,
-                      //                 offset: const Offset(0, 1),
-                      //               ),
-                      //             ]),
-                      //         child: Center(
-                      //           child: Text(
-                      //             'next',
-                      //             style: TextStyle(
-                      //               color: Colors.white,
-                      //               fontSize: 16.sp,
-                      //               fontWeight: FontWeight.normal,
-                      //             ),
-                      //           ),
-                      //         ),
-                      //       ),
-                      //     ],
-                      //   ),
+            
                     ],
                   ),
                   Positioned(
@@ -202,15 +136,15 @@ class _WelcomeState extends State<Welcome> {
               // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SignIn()));
               //           Global.storageService.setBool(AppConstants.STORAGE_DEVICE_OPEN_FIRST_TIME, true);
 
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => MyHomePage(title: 'title'),
-                ),
-              );
+              // Navigator.of(context).push(
+              //   MaterialPageRoute(
+              //     builder: (context) => MyHomePage(title: 'title'),
+              //   ),
+              // );
 
               // print("欢迎页面2");
-              // Navigator.of(context)
-              //     .pushNamedAndRemoveUntil("/sign_in", (route) => false);
+              Navigator.of(context)
+                  .pushNamedAndRemoveUntil("/myHomePage", (route) => false);
             }
           },
           child: Container(

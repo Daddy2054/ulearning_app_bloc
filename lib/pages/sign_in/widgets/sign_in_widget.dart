@@ -70,8 +70,24 @@ Widget reusableText(String text) {
 
 Widget buildTextField(String text, String textType) {
   return Container(
-    width: 325.w,height: 50.h,
-    color: Colors.red ,
-    child: const Text('Hi!'),
-  );
+      width: 325.w,
+      height: 50.h,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(
+          Radius.circular(15.w),
+        ),
+        border: Border.all(color: Colors.black),
+        color: Colors.red,
+      ),
+      child: Row(
+        children: [
+          Container(
+            width: 16.w,
+            height: 16.w,
+            margin: EdgeInsets.only(left: 17.w),
+            child: Image.asset('assets/icons/user.png'),
+          ),
+          Container(width: 280.w,height: ,)
+        ],
+      ));
 }

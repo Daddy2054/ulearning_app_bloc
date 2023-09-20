@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ulearning_app_bloc/common/values/colors.dart';
 
 AppBar buildAppBar() {
   return AppBar(
@@ -7,7 +8,7 @@ AppBar buildAppBar() {
     bottom: PreferredSize(
       preferredSize: const Size.fromHeight(1.0),
       child: Container(
-        color: Colors.grey.withOpacity(0.5),
+        color: AppColors.primarySecondaryBackground,
         //height defines the thickness of the line
         height: 1.0,
       ),
@@ -15,7 +16,7 @@ AppBar buildAppBar() {
     title: Text(
       'Log In',
       style: TextStyle(
-        color: Colors.black,
+        color: AppColors.primaryText,
         fontSize: 16.sp,
         fontWeight: FontWeight.normal,
       ),
@@ -80,10 +81,11 @@ Widget buildTextField(
       bottom: 20.h,
     ),
     decoration: BoxDecoration(
+      color: Colors.white,
       borderRadius: BorderRadius.all(
         Radius.circular(15.w),
       ),
-      border: Border.all(color: Colors.black),
+      border: Border.all(color: AppColors.primaryFourthElementText),
       //    color: Colors.red,
     ),
     child: Row(
@@ -121,14 +123,12 @@ Widget buildTextField(
                   color: Colors.transparent,
                 ),
               ),
-              hintStyle: TextStyle(
-                color: Colors.grey.withOpacity(
-                  0.5,
-                ),
+              hintStyle: const TextStyle(
+                color: AppColors.primarySecondaryElementText,
               ),
             ),
             style: TextStyle(
-              color: Colors.black,
+              color: AppColors.primaryText,
               fontFamily: 'Avenir',
               fontWeight: FontWeight.normal,
               fontSize: 14.sp,
@@ -151,26 +151,34 @@ Widget forgotPassword() {
       child: Text(
         'Forgot password?',
         style: TextStyle(
-          color: Colors.black,
+          color: AppColors.primaryText,
           decoration: TextDecoration.underline,
           fontSize: 12.sp,
-          decorationColor: Colors.blue,
+          decorationColor: AppColors.primaryText ,
         ),
       ),
     ),
   );
 }
 
-Widget buildLogInAndRegButton(String buttonName) {
+Widget buildLogInAndRegButton(String buttonName, String buttonType) {
   return GestureDetector(
     onTap: () {},
     child: Container(
       width: 325.w,
       height: 50.w,
       decoration: BoxDecoration(
-        color: Colors.blue,
+        color: buttonType == 'login'
+            ? AppColors.primaryElement
+            : AppColors.primaryBackground,
         borderRadius: BorderRadius.circular(
           15.w,
+        ),
+        border: Border.all(
+          //check for button color
+          color: buttonType == 'login'
+              ? Colors.transparent
+              : AppColors.primaryFourthElementText,
         ),
         boxShadow: [
           BoxShadow(
@@ -187,7 +195,10 @@ Widget buildLogInAndRegButton(String buttonName) {
           style: TextStyle(
             fontSize: 16.sp,
             fontWeight: FontWeight.normal,
-            color: Colors.white,
+            //color: AppColors.primaryBackground,
+            color: buttonType == 'login'
+                ? AppColors.primaryBackground
+                : AppColors.primaryText,
           ),
         ),
       ),

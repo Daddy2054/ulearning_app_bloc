@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app_bloc/app_blocs.dart';
 import 'package:ulearning_app_bloc/app_events.dart';
 import 'package:ulearning_app_bloc/app_states.dart';
+import 'package:ulearning_app_bloc/pages/sign_in/sign_in.dart';
 import 'package:ulearning_app_bloc/pages/welcome/bloc/welcome_bloc.dart';
 import 'package:ulearning_app_bloc/pages/welcome/welcome.dart';
 
@@ -28,19 +29,21 @@ class MyApp extends StatelessWidget {
           create: (context) => WelcomeBloc(),
         ),
         BlocProvider(
-        //  lazy: false,
+          //  lazy: false,
           create: (context) => AppBlocs(),
         ),
       ],
       child: ScreenUtilInit(
         builder: (context, child) => MaterialApp(
-          home:  const Welcome(),
-          routes: {'/myHomePage':(context)=>const MyHomePage(title: 'title'),},
-          title: 'Flutter Demo',
-          theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-            useMaterial3: true,
-          ),
+          home: const Welcome(),
+          routes: {
+            'myHomePage': (context) => const MyHomePage(title: 'title'),
+            'signIn': (context) => const SignIn(),
+          },
+          // theme: ThemeData(
+          //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          //  useMaterial3: true,
+         // ),
         ),
       ),
     );

@@ -144,7 +144,7 @@ class _WelcomeState extends State<Welcome> {
 
               // print("欢迎页面2");
               Navigator.of(context)
-                  .pushNamedAndRemoveUntil("/myHomePage", (route) => false);
+                  .pushNamedAndRemoveUntil("signIn", (route) => false);
             }
           },
           child: Container(

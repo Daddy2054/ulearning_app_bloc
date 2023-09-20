@@ -61,8 +61,17 @@ Widget reusableText(String text) {
       text,
       style: TextStyle(
         color: Colors.grey.withOpacity(0.9),
-        fontWeight: FontWeight.normal,fontSize: 14.sp,
+        fontWeight: FontWeight.normal,
+        fontSize: 14.sp,
       ),
     ),
+  );
+}
+
+Widget buildTextField(String text, String textType) {
+  return Container(
+    width: 325.w,height: 50.h,
+    color: Colors.red ,
+    child: const Text('Hi!'),
   );
 }

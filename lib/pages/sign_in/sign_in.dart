@@ -45,6 +45,10 @@ class _SignInState extends State<SignIn> {
                         height: 5.h,
                       ),
                       buildTextField('Enter your password', 'password', 'lock'),
+                      SizedBox(
+                        height: 5.h,
+                      ),
+                      forgotPassword(),
                     ],
                   ),
                 )

@@ -68,10 +68,17 @@ Widget reusableText(String text) {
   );
 }
 
-Widget buildTextField(String text, String textType) {
+Widget buildTextField(
+  String hintText,
+  String textType,
+  String iconName,
+) {
   return Container(
       width: 325.w,
       height: 50.h,
+      margin: EdgeInsets.only(
+        bottom: 20.h,
+      ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(
           Radius.circular(15.w),
@@ -85,7 +92,7 @@ Widget buildTextField(String text, String textType) {
             width: 16.w,
             height: 16.w,
             margin: EdgeInsets.only(left: 17.w),
-            child: Image.asset('assets/icons/user.png'),
+            child: Image.asset('assets/icons/$iconName.png'),
           ),
           SizedBox(
             width: 270.w,
@@ -93,7 +100,7 @@ Widget buildTextField(String text, String textType) {
             child: TextField(
               keyboardType: TextInputType.multiline,
               decoration: InputDecoration(
-                hintText: 'Enter your emeil address',
+                hintText: hintText,
                 border: const OutlineInputBorder(
                   borderSide: BorderSide(
                     color: Colors.transparent,
@@ -126,6 +133,8 @@ Widget buildTextField(String text, String textType) {
                 fontWeight: FontWeight.normal,
                 fontSize: 14.sp,
               ),
+              autocorrect: false,
+              obscureText: textType=='password'?true:false,
             ),
           ),
         ],

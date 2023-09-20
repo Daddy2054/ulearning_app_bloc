@@ -77,7 +77,7 @@ Widget buildTextField(String text, String textType) {
           Radius.circular(15.w),
         ),
         border: Border.all(color: Colors.black),
-        color: Colors.red,
+        //    color: Colors.red,
       ),
       child: Row(
         children: [
@@ -87,7 +87,47 @@ Widget buildTextField(String text, String textType) {
             margin: EdgeInsets.only(left: 17.w),
             child: Image.asset('assets/icons/user.png'),
           ),
-          Container(width: 280.w,height: ,)
+          SizedBox(
+            width: 270.w,
+            height: 50.h,
+            child: TextField(
+              keyboardType: TextInputType.multiline,
+              decoration: InputDecoration(
+                hintText: 'Enter your emeil address',
+                border: const OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.transparent,
+                  ),
+                ),
+                enabledBorder: const OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.transparent,
+                  ),
+                ),
+                disabledBorder: const OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.transparent,
+                  ),
+                ),
+                focusedBorder: const OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.transparent,
+                  ),
+                ),
+                hintStyle: TextStyle(
+                  color: Colors.grey.withOpacity(
+                    0.5,
+                  ),
+                ),
+              ),
+              style: TextStyle(
+                color: Colors.black,
+                fontFamily: 'Avenir',
+                fontWeight: FontWeight.normal,
+                fontSize: 14.sp,
+              ),
+            ),
+          ),
         ],
       ));
 }

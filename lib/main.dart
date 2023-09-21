@@ -9,6 +9,7 @@ import 'package:ulearning_app_bloc/pages/bloc_providers.dart';
 import 'package:ulearning_app_bloc/pages/sign_in/sign_in.dart';
 import 'package:ulearning_app_bloc/pages/welcome/welcome.dart';
 
+import 'common/values/colors.dart';
 import 'firebase_options.dart';
 import 'pages/register/register.dart';
 
@@ -39,10 +40,13 @@ class MyApp extends StatelessWidget {
             'signIn': (context) => const SignIn(),
             'register': (context) => const Register(),
           },
-          theme: ThemeData(
-            //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-            useMaterial3: true,
-          ),
+      theme: ThemeData(
+                    appBarTheme: const AppBarTheme(
+                        iconTheme: IconThemeData(
+                          color: AppColors.primaryText,
+                        ),
+                        elevation: 0,
+                        backgroundColor: Colors.white)),
         ),
       ),
     );

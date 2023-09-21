@@ -22,10 +22,14 @@ class _RegisterState extends State<Register> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                SizedBox(
+                  height: 15.h,
+                ),
                 Center(
-                    child: reusableText(
-                  "Enter your details below and free sign up",
-                )),
+                  child: reusableText(
+                    "Enter your details below and free sign up",
+                  ),
+                ),
                 Container(
                   margin: EdgeInsets.only(
                     top: 36.h,
@@ -74,13 +78,18 @@ class _RegisterState extends State<Register> {
                       SizedBox(
                         height: 5.h,
                       ),
-                      forgotPassword(),
-                      buildLogInAndRegButton('Sign Up', 'register', () {
+                      reusableText(
+                        "By creating an account you have to agree with our them & condition.",
+                      ),
+                      SizedBox(
+                        height: 5.h,
+                      ),
+                      buildLogInAndRegButton('Sign Up', 'login', () {
                         Navigator.of(context).pushNamed('register');
                       }),
                     ],
                   ),
-                )
+                ),
               ],
             ),
           ),

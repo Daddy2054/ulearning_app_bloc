@@ -17,9 +17,11 @@ class SignInController {
         String password = state.password;
         if (emailAddress.isEmpty) {
           toastInfo(msg: 'email is empty');
+          return;
         }
         if (password.isEmpty) {
           toastInfo(msg: 'password is empty');
+          return;
         }
         try {
           final credential =

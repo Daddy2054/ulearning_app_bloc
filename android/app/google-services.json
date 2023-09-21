@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "889570631898",
+    "project_id": "ulearning-app-dbcb4",
+    "storage_bucket": "ulearning-app-dbcb4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:889570631898:android:801effdfe737c6960885e3",
+        "android_client_info": {
+          "package_name": "com.example.frontend"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "889570631898-jqq8c332ger19l4cmki91qghii1km4er.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6qK10iLgtTuMYCxCskmU848XzFwtHw7s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "889570631898-jqq8c332ger19l4cmki91qghii1km4er.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:889570631898:android:c640d910a41d49010885e3",
+        "android_client_info": {
+          "package_name": "com.example.ulearning_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "889570631898-jqq8c332ger19l4cmki91qghii1km4er.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6qK10iLgtTuMYCxCskmU848XzFwtHw7s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "889570631898-jqq8c332ger19l4cmki91qghii1km4er.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

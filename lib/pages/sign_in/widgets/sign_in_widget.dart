@@ -31,7 +31,9 @@ Widget buildThirdPartyLogin(BuildContext context) {
       top: 40.h,
       bottom: 20.h,
     ),
-    padding: EdgeInsets.symmetric(horizontal: 25.w,),
+    padding: EdgeInsets.symmetric(
+      horizontal: 25.w,
+    ),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
@@ -74,7 +76,7 @@ Widget buildTextField(
   String hintText,
   String textType,
   String iconName,
-    void Function(String value)? func,
+  void Function(String value)? func,
 ) {
   return Container(
     width: 325.w,
@@ -102,7 +104,7 @@ Widget buildTextField(
           width: 270.w,
           height: 50.h,
           child: TextField(
-            onChanged: (value)=>func!(value),
+            onChanged: (value) => func!(value),
             keyboardType: TextInputType.multiline,
             decoration: InputDecoration(
               hintText: hintText,
@@ -157,16 +159,20 @@ Widget forgotPassword() {
           color: AppColors.primaryText,
           decoration: TextDecoration.underline,
           fontSize: 12.sp,
-          decorationColor: AppColors.primaryText ,
+          decorationColor: AppColors.primaryText,
         ),
       ),
     ),
   );
 }
 
-Widget buildLogInAndRegButton(String buttonName, String buttonType) {
+Widget buildLogInAndRegButton(
+  String buttonName,
+  String buttonType,
+  void Function()? func,
+) {
   return GestureDetector(
-    onTap: () {},
+    onTap: func,
     child: Container(
       width: 325.w,
       height: 50.w,

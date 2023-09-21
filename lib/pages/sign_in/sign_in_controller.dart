@@ -14,8 +14,13 @@ class SignInController {
         final state = context.read<SignInBloc>().state;
         String emailAddress = state.email;
         String password = state.password;
-        if (emailAddress.isEmpty) {}
-        if (password.isEmpty) {}
+        if (emailAddress.isEmpty) {
+          print('email is empty');
+        }
+        if (password.isEmpty) {
+          print('password is empty');
+
+        }
         try {
           final credential =
               await FirebaseAuth.instance.signInWithEmailAndPassword(
@@ -29,12 +34,25 @@ class SignInController {
 //
           }
           var user = credential.user;
-          if (user!=null){
+          if (user != null) {
             //we got verified user from firebase
-          }else {
+          } else {
             //error getting user from firebase
           }
-        } catch (e) {}
+        }  on FirebaseAuthException catch (e) {
+          if (e.code == 'user-not-found') {
+            print('No user found for that email.');
+   //         toastInfo(msg: "No user found for that email");
+           // toastInfo(msg: "No user found for that email.");
+          } else if (e.code == 'wrong-password') {
+            print('Wrong password provided for that user.');
+     //       toastInfo(msg: "Wrong password provided for that user");
+           // toastInfo(msg: "Wrong password provided for that user.");
+          }else if(e.code=='invalid-email'){
+            print("Your email format is wrong");
+       //     toastInfo(msg: "Your email address format is wrong");
+          }
+        }
       }
     } catch (e) {}
   }

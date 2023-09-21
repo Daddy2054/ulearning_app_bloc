@@ -22,7 +22,7 @@ class _SignInState extends State<SignIn> {
           color: Colors.white,
           child: SafeArea(
             child: Scaffold(
-              appBar: buildAppBar(),
+              appBar: buildAppBar('Log In'),
               body: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,15 +68,15 @@ class _SignInState extends State<SignIn> {
                             height: 5.h,
                           ),
                           forgotPassword(),
-                          buildLogInAndRegButton('Log in', 'login', () {
-                            print('login button');
+                          buildLogInAndRegButton('Log In', 'login', () {
+                 //           print('login button');
                             SignInController(context: context)
                                 .handleSignIn('email');
                           }),
                           SizedBox(
                             height: 5.h,
                           ),
-                          buildLogInAndRegButton('Register', 'register', () {
+                          buildLogInAndRegButton('Sign Up', 'register', () {
                             Navigator.of(context).pushNamed('register');
                           }),
                         ],

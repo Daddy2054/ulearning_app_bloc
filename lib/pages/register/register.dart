@@ -14,67 +14,78 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Container(
-          color: Colors.white,
-          child: SafeArea(
-            child: Scaffold(
-              appBar: buildAppBar(),
-              body: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Center(
-                        child:
-                            reusableText('Or use your email account to login')),
-                    Container(
-                      margin: EdgeInsets.only(
-                        top: 36.h,
+      color: Colors.white,
+      child: SafeArea(
+        child: Scaffold(
+          appBar: buildAppBar('Sign Up'),
+          body: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Center(
+                    child: reusableText(
+                  "Enter your details below and free sign up",
+                )),
+                Container(
+                  margin: EdgeInsets.only(
+                    top: 36.h,
+                  ),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 25.w,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      reusableText('User name'),
+                      buildTextField(
+                        'Enter your username',
+                        'name',
+                        'user',
+                        (value) {
+                          //     context.read<SignInBloc>().add(EmailEvent(value));
+                        },
                       ),
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 25.w,
+                      reusableText('Email'),
+                      buildTextField(
+                        'Enter your email address',
+                        'email',
+                        'user',
+                        (value) {
+                          //     context.read<SignInBloc>().add(EmailEvent(value));
+                        },
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          reusableText('Email'),
-                          SizedBox(
-                            height: 5.h,
-                          ),
-                          buildTextField(
-                            'Enter your email address',
-                            'email',
-                            'user',
-                            (value) {
-                         //     context.read<SignInBloc>().add(EmailEvent(value));
-                            },
-                          ),
-                          reusableText('Password'),
-                          SizedBox(
-                            height: 5.h,
-                          ),
-                          buildTextField(
-                              'Enter your password', 'password', 'lock',
-                              (value) {
-                            // context
-                            //     .read<SignInBloc>()
-                            //     .add(PasswordEvent(value));
-                          }),
-                          SizedBox(
-                            height: 5.h,
-                          ),
-                          forgotPassword(),
-                 
-                          buildLogInAndRegButton('Register', 'register', () {
-                            Navigator.of(context).pushNamed('register');
-                          }),
-                        ],
+                      reusableText('Password'),
+                      buildTextField('Enter your password', 'password', 'lock',
+                          (value) {
+                        // context
+                        //     .read<SignInBloc>()
+                        //     .add(PasswordEvent(value));
+                      }),
+                      SizedBox(
+                        height: 5.h,
                       ),
-                    )
-                  ],
-                ),
-              ),
+                      reusableText('Confirm password'),
+                      buildTextField(
+                          'Confirm your password', 'password', 'lock', (value) {
+                        // context
+                        //     .read<SignInBloc>()
+                        //     .add(PasswordEvent(value));
+                      }),
+                      SizedBox(
+                        height: 5.h,
+                      ),
+                      forgotPassword(),
+                      buildLogInAndRegButton('Sign Up', 'register', () {
+                        Navigator.of(context).pushNamed('register');
+                      }),
+                    ],
+                  ),
+                )
+              ],
             ),
           ),
-        );
-     
+        ),
+      ),
+    );
   }
 }

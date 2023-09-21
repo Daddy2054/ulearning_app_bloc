@@ -6,12 +6,11 @@ import 'package:ulearning_app_bloc/app_blocs.dart';
 import 'package:ulearning_app_bloc/app_events.dart';
 import 'package:ulearning_app_bloc/app_states.dart';
 import 'package:ulearning_app_bloc/pages/bloc_providers.dart';
-import 'package:ulearning_app_bloc/pages/sign_in/bloc/sign_in_bloc.dart';
 import 'package:ulearning_app_bloc/pages/sign_in/sign_in.dart';
-import 'package:ulearning_app_bloc/pages/welcome/bloc/welcome_bloc.dart';
 import 'package:ulearning_app_bloc/pages/welcome/welcome.dart';
 
 import 'firebase_options.dart';
+import 'pages/register/register.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,6 +37,7 @@ class MyApp extends StatelessWidget {
           routes: {
             'myHomePage': (context) => const MyHomePage(title: 'title'),
             'signIn': (context) => const SignIn(),
+            'register': (context) => const Register(),
           },
           theme: ThemeData(
             //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),

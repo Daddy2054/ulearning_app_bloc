@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app_bloc/pages/register/bloc/register_bloc.dart';
 
 import '../common_widgets.dart';
+import 'register_controller.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -95,7 +96,8 @@ class _RegisterState extends State<Register> {
                             height: 5.h,
                           ),
                           buildLogInAndRegButton('Sign Up', 'login', () {
-                            Navigator.of(context).pushNamed('register');
+                    //        Navigator.of(context).pushNamed('register');
+                    RegisterController(context:context).handleEmailRegister();
                           }),
                         ],
                       ),

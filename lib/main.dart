@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
         builder: (context, child) => MaterialApp(
           home: const Welcome(),
           routes: {
-            'myHomePage': (context) => const MyHomePage(title: 'title'),
+   //         'myHomePage': (context) => const MyHomePage(title: 'title'),
             'signIn': (context) => const SignIn(),
             'register': (context) => const Register(),
           },

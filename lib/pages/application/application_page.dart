@@ -15,7 +15,33 @@ class _ApplicationPageState extends State<ApplicationPage> {
       color: Colors.white,
       child: SafeArea(
         child: Scaffold(
-          body: buildPage(2),
+          body: buildPage(0),
+          bottomNavigationBar: BottomNavigationBar(
+              elevation: 0,
+              selectedItemColor: Colors.red,
+              unselectedItemColor: Colors.amber,
+              items: const [
+                BottomNavigationBarItem(
+                  label: 'Home',
+                  icon: Icon(Icons.home),
+                ),
+                BottomNavigationBarItem(
+                  label: 'Search',
+                  icon: Icon(Icons.search),
+                ),
+                BottomNavigationBarItem(
+                  label: 'Play',
+                  icon: Icon(Icons.play_arrow),
+                ),
+                BottomNavigationBarItem(
+                  label: 'Chat',
+                  icon: Icon(Icons.message),
+                ),
+                BottomNavigationBarItem(
+                  label: 'Profile',
+                  icon: Icon(Icons.person),
+                ),
+              ]),
         ),
       ),
     );

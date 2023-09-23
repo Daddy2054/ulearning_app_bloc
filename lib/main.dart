@@ -5,8 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app_bloc/app_blocs.dart';
 import 'package:ulearning_app_bloc/app_events.dart';
 import 'package:ulearning_app_bloc/app_states.dart';
+import 'package:ulearning_app_bloc/common/routes/pages.dart';
 import 'package:ulearning_app_bloc/pages/application/application_page.dart';
-import 'package:ulearning_app_bloc/pages/bloc_providers.dart';
 import 'package:ulearning_app_bloc/pages/sign_in/sign_in.dart';
 
 import 'common/values/colors.dart';
@@ -26,12 +26,10 @@ class MyApp extends StatelessWidget {
 
   // This widget is the root of your application.
 
-//  on step 16-17? add multidex support running "flutter run" from terminal
-
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: AppBlocProviders.allBlocProviders,
+      providers: [...AppPages.allBlocProviders(context)],
       child: ScreenUtilInit(
         builder: (context, child) => MaterialApp(
 //          home: const Welcome(),
@@ -41,13 +39,13 @@ class MyApp extends StatelessWidget {
             'signIn': (context) => const SignIn(),
             'register': (context) => const Register(),
           },
-      theme: ThemeData(
-                    appBarTheme: const AppBarTheme(
-                        iconTheme: IconThemeData(
-                          color: AppColors.primaryText,
-                        ),
-                        elevation: 0,
-                        backgroundColor: Colors.white)),
+          theme: ThemeData(
+              appBarTheme: const AppBarTheme(
+                  iconTheme: IconThemeData(
+                    color: AppColors.primaryText,
+                  ),
+                  elevation: 0,
+                  backgroundColor: Colors.white)),
         ),
       ),
     );

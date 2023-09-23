@@ -6,12 +6,10 @@ import 'package:ulearning_app_bloc/app_blocs.dart';
 import 'package:ulearning_app_bloc/app_events.dart';
 import 'package:ulearning_app_bloc/app_states.dart';
 import 'package:ulearning_app_bloc/common/routes/pages.dart';
-import 'package:ulearning_app_bloc/pages/application/application_page.dart';
-import 'package:ulearning_app_bloc/pages/sign_in/sign_in.dart';
 
 import 'common/values/colors.dart';
 import 'firebase_options.dart';
-import 'pages/register/register.dart';
+import 'pages/welcome/welcome.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,13 +30,14 @@ class MyApp extends StatelessWidget {
       providers: [...AppPages.allBlocProviders(context)],
       child: ScreenUtilInit(
         builder: (context, child) => MaterialApp(
-//          home: const Welcome(),
-          home: const ApplicationPage(),
-          routes: {
-            'myHomePage': (context) => const MyHomePage(title: 'title'),
-            'signIn': (context) => const SignIn(),
-            'register': (context) => const Register(),
-          },
+          home: const Welcome(),
+//          home: const ApplicationPage(),
+                onGenerateRoute: AppPages.generateRouteSettings,
+          // routes: {
+          //   'myHomePage': (context) => const MyHomePage(title: 'title'),
+          //   'signIn': (context) => const SignIn(),
+          //   'register': (context) => const Register(),
+          // },
           theme: ThemeData(
               appBarTheme: const AppBarTheme(
                   iconTheme: IconThemeData(

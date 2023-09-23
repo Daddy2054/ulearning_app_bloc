@@ -9,8 +9,9 @@ class ApplicationPage extends StatefulWidget {
 }
 
 class _ApplicationPageState extends State<ApplicationPage> {
-  @override
   int _index = 0;
+  @override
+  @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
@@ -20,10 +21,8 @@ class _ApplicationPageState extends State<ApplicationPage> {
           bottomNavigationBar: BottomNavigationBar(
               onTap: (value) {
                 setState(() {
-                  
-                _index = value;
+                  _index = value;
                 });
-                print(_index);
               },
               currentIndex: _index,
               elevation: 0,

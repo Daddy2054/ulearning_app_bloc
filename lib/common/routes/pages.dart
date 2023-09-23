@@ -1,5 +1,53 @@
 //unify BlocProvider and routes and pages
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../app_blocs.dart';
+import '../../pages/application/application_page.dart';
+import '../../pages/register/bloc/register_bloc.dart';
+import '../../pages/register/register.dart';
+import '../../pages/sign_in/bloc/sign_in_bloc.dart';
+import '../../pages/sign_in/sign_in.dart';
+import '../../pages/welcome/bloc/welcome_bloc.dart';
+import '../../pages/welcome/welcome.dart';
+import 'names.dart';
+
+class AppPages {
+  static List<PageEntity> routes() {
+    return [
+      PageEntity(
+          route: AppRoutes.INITIAL,
+          page: const Welcome(),
+          bloc: BlocProvider(
+            create: (_) => WelcomeBloc(),
+          ),),
+                PageEntity(
+          route: AppRoutes.SING_IN,
+          page: const SignIn(),
+          bloc: BlocProvider(create: (_) => SignInBloc(),)
+      ),
+      PageEntity(
+          route: AppRoutes.REGISTER,
+          page: const Register(),
+          bloc: BlocProvider(create: (_) => RegisterBloc(),)
+      ),
+      PageEntity(
+        route: AppRoutes.APPLICATION,
+        page: const ApplicationPage(),
+        bloc: BlocProvider(create: (_)=>AppBlocs(),)
+      ),
+    ];
+  }
+
+  //return all the bloc providers
+  static List<dynamic> allBlocProviders(BuildContext context) {
+    List<dynamic> blocProviders = <dynamic>[];
+    for (var bloc in routes()) {
+      blocProviders.add(bloc.bloc);
+    }
+    return blocProviders;
+  }
+}
 
 class PageEntity {
   String route;

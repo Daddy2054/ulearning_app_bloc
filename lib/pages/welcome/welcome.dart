@@ -146,7 +146,7 @@ class _WelcomeState extends State<Welcome> {
                   curve: Curves.easeIn);
             } else {
               Navigator.of(context)
-                  .pushNamedAndRemoveUntil("signIn", (route) => false);
+                  .pushNamedAndRemoveUntil("/sign_in", (route) => false);
             }
           },
           child: Container(

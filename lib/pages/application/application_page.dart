@@ -10,16 +10,26 @@ class ApplicationPage extends StatefulWidget {
 
 class _ApplicationPageState extends State<ApplicationPage> {
   @override
+  int _index = 0;
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
       child: SafeArea(
         child: Scaffold(
-          body: buildPage(0),
+          body: buildPage(_index),
           bottomNavigationBar: BottomNavigationBar(
+              onTap: (value) {
+                setState(() {
+                  
+                _index = value;
+                });
+                print(_index);
+              },
+              currentIndex: _index,
               elevation: 0,
-              selectedItemColor: Colors.red,
-              unselectedItemColor: Colors.amber,
+              selectedItemColor: Colors.blue,
+              unselectedItemColor: Colors.grey,
+              showUnselectedLabels: true,
               items: const [
                 BottomNavigationBarItem(
                   label: 'Home',

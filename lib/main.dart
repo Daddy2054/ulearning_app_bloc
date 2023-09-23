@@ -8,7 +8,6 @@ import 'package:ulearning_app_bloc/app_states.dart';
 import 'package:ulearning_app_bloc/pages/application/application_page.dart';
 import 'package:ulearning_app_bloc/pages/bloc_providers.dart';
 import 'package:ulearning_app_bloc/pages/sign_in/sign_in.dart';
-import 'package:ulearning_app_bloc/pages/welcome/welcome.dart';
 
 import 'common/values/colors.dart';
 import 'firebase_options.dart';

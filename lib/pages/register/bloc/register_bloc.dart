@@ -1,4 +1,5 @@
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'register_event.dart';
@@ -13,19 +14,27 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
    }
 
    void _userNameEvent(UserNameEvent event, Emitter<RegisterState> emit){
-     print("${event.userName}");
+     if (kDebugMode) {
+       print(event.userName);
+     }
       emit(state.copyWith(userName:event.userName));
    }
    void _emailEvent(EmailEvent event, Emitter<RegisterState> emit){
-     print("${event.email}");
+     if (kDebugMode) {
+       print(event.email);
+     }
       emit(state.copyWith(email:event.email));
    }
    void _passwordEvent(PasswordEvent event, Emitter<RegisterState> emit){
-     print("${event.password}");
+     if (kDebugMode) {
+       print(event.password);
+     }
       emit(state.copyWith(password:event.password));
    }
    void _rePasswordEvent(RePasswordEvent event, Emitter<RegisterState> emit){
-     print("${event.rePassword}");
+     if (kDebugMode) {
+       print(event.rePassword);
+     }
       emit(state.copyWith(rePassword:event.rePassword));
    }
 }

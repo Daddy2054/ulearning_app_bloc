@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 class AppConstants{
   //static const String SERVER_API_URL = "https://2dc0-165-154-72-189.ngrok-free.app/";
   static const String SERVER_API_URL = "http://127.0.0.1:8000/";

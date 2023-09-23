@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ulearning_app_bloc/common/widgets/flutter_toast.dart';
@@ -41,7 +42,9 @@ class SignInController {
           var user = credential.user;
           if (user != null) {
             //we got verified user from firebase
-            print('user exist');
+            if (kDebugMode) {
+              print('user exist');
+            }
           } else {
             //error getting user from firebase
             toastInfo(msg: "Currently you are not a user of this app");
@@ -58,7 +61,9 @@ class SignInController {
         }
       }
     } catch (e) {
-      print(e.toString());
+      if (kDebugMode) {
+        print(e.toString());
+      }
     }
   }
 }

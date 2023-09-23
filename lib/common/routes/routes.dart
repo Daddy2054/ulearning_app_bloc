@@ -1,2 +1,2 @@
-//export 'pages.dart';
+export 'pages.dart';
 export 'names.dart';

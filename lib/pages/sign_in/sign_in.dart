@@ -77,7 +77,7 @@ class _SignInState extends State<SignIn> {
                             height: 5.h,
                           ),
                           buildLogInAndRegButton('Sign Up', 'register', () {
-                            Navigator.of(context).pushNamed('register');
+                            Navigator.of(context).pushNamed('/register');
                           }),
                         ],
                       ),

@@ -2,14 +2,13 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ulearning_app_bloc/app_blocs.dart';
-import 'package:ulearning_app_bloc/app_events.dart';
-import 'package:ulearning_app_bloc/app_states.dart';
-import 'package:ulearning_app_bloc/common/routes/pages.dart';
 
+import 'app_blocs.dart';
+import 'app_events.dart';
+import 'app_states.dart';
+import 'common/routes/routes.dart';
 import 'common/values/colors.dart';
 import 'firebase_options.dart';
-import 'pages/welcome/welcome.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,21 +29,16 @@ class MyApp extends StatelessWidget {
       providers: [...AppPages.allBlocProviders(context)],
       child: ScreenUtilInit(
         builder: (context, child) => MaterialApp(
-          home: const Welcome(),
-//          home: const ApplicationPage(),
-                onGenerateRoute: AppPages.generateRouteSettings,
-          // routes: {
-          //   'myHomePage': (context) => const MyHomePage(title: 'title'),
-          //   'signIn': (context) => const SignIn(),
-          //   'register': (context) => const Register(),
-          // },
+          onGenerateRoute: AppPages.generateRouteSettings,
           theme: ThemeData(
-              appBarTheme: const AppBarTheme(
-                  iconTheme: IconThemeData(
-                    color: AppColors.primaryText,
-                  ),
-                  elevation: 0,
-                  backgroundColor: Colors.white)),
+            appBarTheme: const AppBarTheme(
+              iconTheme: IconThemeData(
+                color: AppColors.primaryText,
+              ),
+              elevation: 0,
+              backgroundColor: Colors.white,
+            ),
+          ),
         ),
       ),
     );

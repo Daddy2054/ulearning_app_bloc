@@ -43,10 +43,10 @@ class SignInController {
           var user = credential.user;
           if (user != null) {
             //we got verified user from firebase
-            context2.pushNamedAndRemoveUntil('/application', (route) => false);
             if (kDebugMode) {
               print('user exist');
             }
+            context2.pushNamedAndRemoveUntil('/application', (route) => false);
           } else {
             //error getting user from firebase
             toastInfo(msg: "Currently you are not a user of this app");

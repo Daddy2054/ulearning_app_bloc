@@ -25,6 +25,7 @@ class SignInController {
           return;
         }
         try {
+          var context2 = Navigator.of(context);
           final credential =
               await FirebaseAuth.instance.signInWithEmailAndPassword(
             email: emailAddress,
@@ -42,8 +43,7 @@ class SignInController {
           var user = credential.user;
           if (user != null) {
             //we got verified user from firebase
-            Navigator.of(context)
-                .pushNamedAndRemoveUntil('/application', (route) => false);
+            context2.pushNamedAndRemoveUntil('/application', (route) => false);
             if (kDebugMode) {
               print('user exist');
             }

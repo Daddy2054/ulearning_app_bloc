@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../common/values/colors.dart';
+import '../../common/values/constant.dart';
+import '../../global.dart';
 import 'bloc/welcome_bloc.dart';
 import 'bloc/welcome_event.dart';
 import 'bloc/welcome_state.dart';
@@ -145,6 +147,7 @@ class _WelcomeState extends State<Welcome> {
                   ),
                   curve: Curves.easeIn);
             } else {
+              Global.storageService.setBool(AppConstants.STORAGE_DEVICE_OPEN_FIRST_TIME, true);
               Navigator.of(context)
                   .pushNamedAndRemoveUntil("/sign_in", (route) => false);
             }

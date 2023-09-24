@@ -7,4 +7,8 @@ class StorageService {
     _prefs = await SharedPreferences.getInstance();
     return this;
   }
+
+    Future<bool> setBool(String key, bool value) async {
+    return await _prefs.setBool(key, value);
+  }
 }

@@ -12,8 +12,8 @@ class ApplicationPage extends StatefulWidget {
 }
 
 class _ApplicationPageState extends State<ApplicationPage> {
-  final int _index = 0;
-  @override
+  // final int _index = 0;
+  // @override
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AppBloc, AppState>(
@@ -22,12 +22,12 @@ class _ApplicationPageState extends State<ApplicationPage> {
           color: Colors.white,
           child: SafeArea(
             child: Scaffold(
-              body: buildPage(_index),
+              body: buildPage(state.index),
               bottomNavigationBar: BottomNavigationBar(
                 onTap: (value) {
                   context.read<AppBloc>().add(TriggerAppEvent(value));
                 },
-                currentIndex: _index,
+                currentIndex: state.index,
                 elevation: 0,
                 selectedItemColor: Colors.blue,
                 unselectedItemColor: Colors.grey,

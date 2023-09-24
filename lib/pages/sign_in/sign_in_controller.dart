@@ -35,13 +35,15 @@ class SignInController {
             return;
           }
           if (!credential.user!.emailVerified) {
-           toastInfo(msg: "You need to verify your email account");
+            toastInfo(msg: "You need to verify your email account");
 
             return;
           }
           var user = credential.user;
           if (user != null) {
             //we got verified user from firebase
+            Navigator.of(context)
+                .pushNamedAndRemoveUntil('/application', (route) => false);
             if (kDebugMode) {
               print('user exist');
             }

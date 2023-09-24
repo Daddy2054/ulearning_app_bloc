@@ -24,23 +24,26 @@ class AppPages {
         ),
       ),
       PageEntity(
-          route: AppRoutes.SING_IN,
-          page: const SignIn(),
-          bloc: BlocProvider(
-            create: (_) => SignInBloc(),
-          )),
+        route: AppRoutes.SING_IN,
+        page: const SignIn(),
+        bloc: BlocProvider(
+          create: (_) => SignInBloc(),
+        ),
+      ),
       PageEntity(
-          route: AppRoutes.REGISTER,
-          page: const Register(),
-          bloc: BlocProvider(
-            create: (_) => RegisterBloc(),
-          )),
+        route: AppRoutes.REGISTER,
+        page: const Register(),
+        bloc: BlocProvider(
+          create: (_) => RegisterBloc(),
+        ),
+      ),
       PageEntity(
-          route: AppRoutes.APPLICATION,
-          page: const ApplicationPage(),
-          bloc: BlocProvider(
-            create: (_) => AppBlocs(),
-          )),
+        route: AppRoutes.APPLICATION,
+        page: const ApplicationPage(),
+        bloc: BlocProvider(
+          create: (_) => AppBloc(),
+        ),
+      ),
     ];
   }
 
@@ -75,9 +78,9 @@ class AppPages {
             builder: (_) => result.first.page, settings: settings);
       }
     }
-        if (kDebugMode) {
-          print('invalid route name is: ${settings.name}');
-        }
+    if (kDebugMode) {
+      print('invalid route name is: ${settings.name}');
+    }
     return MaterialPageRoute(
         builder: (_) => const SignIn(), settings: settings);
   }

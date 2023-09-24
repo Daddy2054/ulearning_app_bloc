@@ -32,28 +32,7 @@ class _ApplicationPageState extends State<ApplicationPage> {
                 selectedItemColor: Colors.blue,
                 unselectedItemColor: Colors.grey,
                 showUnselectedLabels: true,
-                items: const [
-                  BottomNavigationBarItem(
-                    label: 'Home',
-                    icon: Icon(Icons.home),
-                  ),
-                  BottomNavigationBarItem(
-                    label: 'Search',
-                    icon: Icon(Icons.search),
-                  ),
-                  BottomNavigationBarItem(
-                    label: 'Play',
-                    icon: Icon(Icons.play_arrow),
-                  ),
-                  BottomNavigationBarItem(
-                    label: 'Chat',
-                    icon: Icon(Icons.message),
-                  ),
-                  BottomNavigationBarItem(
-                    label: 'Profile',
-                    icon: Icon(Icons.person),
-                  ),
-                ],
+                items: bottomTabs,
               ),
             ),
           ),

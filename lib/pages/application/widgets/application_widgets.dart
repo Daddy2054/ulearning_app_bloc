@@ -11,3 +11,26 @@ Widget buildPage(int index) {
 
   return widget[index];
 }
+
+var bottomTabs = const [
+  BottomNavigationBarItem(
+    label: 'Home',
+    icon: Icon(Icons.home),
+  ),
+  BottomNavigationBarItem(
+    label: 'Search',
+    icon: Icon(Icons.search),
+  ),
+  BottomNavigationBarItem(
+    label: 'Play',
+    icon: Icon(Icons.play_arrow),
+  ),
+  BottomNavigationBarItem(
+    label: 'Chat',
+    icon: Icon(Icons.message),
+  ),
+  BottomNavigationBarItem(
+    label: 'Profile',
+    icon: Icon(Icons.person),
+  ),
+];

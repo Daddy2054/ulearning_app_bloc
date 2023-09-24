@@ -70,26 +70,36 @@ class AppPages {
         }
         bool deviceFirstOpen = Global.storageService.getDeviceFirstOpen();
         if (result.first.route == AppRoutes.INITIAL && deviceFirstOpen) {
-            if (kDebugMode) {
+          if (kDebugMode) {
 //          print('valid route name is: ${settings.name}');
-          print('second log');
-        }  //bool isLoggedin = Global.storageService.getIsLoggedIn();
-          // if(isLoggedin){
-          //   return MaterialPageRoute(builder: (_)=>const ApplicationPage(), settings: settings);
-          // }
+            print('second log');
+          }
+          bool isLoggedin = Global.storageService.getIsLoggedIn();
+          if (isLoggedin) {
+            return MaterialPageRoute(
+              builder: (_) => const ApplicationPage(),
+              settings: settings,
+            );
+          }
 
           return MaterialPageRoute(
-              builder: (_) => const SignIn(), settings: settings);
+            builder: (_) => const SignIn(),
+            settings: settings,
+          );
         }
         return MaterialPageRoute(
-            builder: (_) => result.first.page, settings: settings);
+          builder: (_) => result.first.page,
+          settings: settings,
+        );
       }
     }
     if (kDebugMode) {
       print('invalid route name is: ${settings.name}');
     }
     return MaterialPageRoute(
-        builder: (_) => const SignIn(), settings: settings);
+      builder: (_) => const SignIn(),
+      settings: settings,
+    );
   }
 }
 

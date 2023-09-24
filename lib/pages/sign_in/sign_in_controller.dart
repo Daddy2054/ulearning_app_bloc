@@ -2,7 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ulearning_app_bloc/common/values/constant.dart';
 import 'package:ulearning_app_bloc/common/widgets/flutter_toast.dart';
+import 'package:ulearning_app_bloc/global.dart';
 import 'package:ulearning_app_bloc/pages/sign_in/bloc/sign_in_bloc.dart';
 
 class SignInController {
@@ -46,6 +48,10 @@ class SignInController {
             if (kDebugMode) {
               print('user exist');
             }
+            Global.storageService.setString(
+              AppConstants.STORAGE_USER_TOKEN_KEY,
+              '11111',
+            );
             context2.pushNamedAndRemoveUntil('/application', (route) => false);
           } else {
             //error getting user from firebase

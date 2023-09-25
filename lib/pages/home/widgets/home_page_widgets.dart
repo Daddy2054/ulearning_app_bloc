@@ -54,7 +54,7 @@ Widget searchView() {
   return Row(
     children: [
       Container(
-        width: 280.w,
+        width: 250.w,
         height: 40.h,
         decoration: BoxDecoration(
           color: AppColors.primaryBackground,
@@ -66,19 +66,35 @@ Widget searchView() {
         child: Row(
           children: [
             const SizedBox(
-              width: 10,
+              width: 5,
             ),
             SizedBox(
-              width: 240.w,
+              width: 220.w,
               height: 40.h,
               child: TextField(
-                decoration: InputDecoration(
-                  prefixIcon: const Icon(Icons.search),
-                  hintText: hintText,
-                ),
-              ),
-            )
+                  decoration: InputDecoration(
+                    prefixIcon: const Icon(Icons.search),
+                    hintText: hintText,
+                  ),
+                  onChanged: (value) {},
+                  onSubmitted: (value) {}),
+            ),
           ],
+        ),
+      ),
+      const SizedBox(
+        width: 15,
+      ),
+      GestureDetector(
+        child: Container(
+          width: 40.w,
+          height: 40.h,
+          decoration: BoxDecoration(
+            color: AppColors.primaryElement,
+            borderRadius: BorderRadius.all(Radius.circular(13.w)),
+            border: Border.all(color: AppColors.primaryElement),
+          ),
+          child: Image.asset("assets/icons/options.png"),
         ),
       ),
     ],

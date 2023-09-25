@@ -35,6 +35,8 @@ class _HomePageState extends State<HomePage> {
               color: AppColors.primaryText,
               top: 5,
             ),
+            SizedBox(height: 20,),
+            searchView(),
           ],
         ),
       ),

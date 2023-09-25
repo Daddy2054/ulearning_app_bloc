@@ -5,35 +5,37 @@ import '../../../common/values/colors.dart';
 
 AppBar buildAppBar() {
   return AppBar(
-    title: Container(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox(
-            width: 15.w,
-            height: 12.h,
-            child: const Icon(Icons.menu),
-          ),
-          GestureDetector(
-            child: Container(
-              width: 40.w,
-              height: 40.h,
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/icons/person.png'),
-                ),
+    title: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        SizedBox(
+          width: 15.w,
+          height: 12.h,
+          child: const Icon(Icons.menu),
+        ),
+        GestureDetector(
+          child: Container(
+            width: 40.w,
+            height: 40.h,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/icons/person.png'),
               ),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     ),
   );
 }
 
-Widget homePageText(String text,
-    {Color color = AppColors.primaryText, int top = 20,}) {
+//reusable big text widget
+Widget homePageText(
+  String text, {
+  Color color = AppColors.primaryText,
+  int top = 20,
+}) {
   return Container(
     margin: EdgeInsets.only(top: top.h),
     child: Text(
@@ -44,5 +46,41 @@ Widget homePageText(String text,
         fontWeight: FontWeight.bold,
       ),
     ),
+  );
+}
+
+Widget searchView() {
+  var hintText = 'search your course';
+  return Row(
+    children: [
+      Container(
+        width: 280.w,
+        height: 40.h,
+        decoration: BoxDecoration(
+          color: AppColors.primaryBackground,
+          borderRadius: BorderRadius.circular(15.h),
+          border: Border.all(
+            color: AppColors.primaryFourthElementText,
+          ),
+        ),
+        child: Row(
+          children: [
+            const SizedBox(
+              width: 10,
+            ),
+            SizedBox(
+              width: 240.w,
+              height: 40.h,
+              child: TextField(
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.search),
+                  hintText: hintText,
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
+    ],
   );
 }

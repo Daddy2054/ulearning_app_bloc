@@ -22,22 +22,23 @@ class _HomePageState extends State<HomePage> {
           horizontal: 25.w,
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              margin: EdgeInsets.only(top: 20.h),
-              child: Text(
-                'Hello James',
-                style: TextStyle(
-                  color: AppColors.primaryThirdElementText,
-                  fontSize: 24.sp,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+   
+            homePageText(
+              'hello',
+              color: AppColors.primaryThirdElementText,
+              top: 20,
+            ),
+            homePageText(
+              'James Bond',
+              color: AppColors.primaryText,
+              top: 5,
             ),
           ],
         ),
       ),
-//      appBar: buildAppBar(userProfile.avatar.toString()),
     );
+//      appBar: buildAppBar(userProfile.avatar.toString()),
   }
 }

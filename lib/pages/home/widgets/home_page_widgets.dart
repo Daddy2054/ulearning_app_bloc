@@ -54,7 +54,7 @@ Widget searchView() {
   return Row(
     children: [
       Container(
-        width: 250.w,
+        width: 270.w,
         height: 40.h,
         decoration: BoxDecoration(
           color: AppColors.primaryBackground,
@@ -83,7 +83,7 @@ Widget searchView() {
         ),
       ),
       const SizedBox(
-        width: 15,
+        width: 10,
       ),
       GestureDetector(
         child: Container(
@@ -94,7 +94,8 @@ Widget searchView() {
             borderRadius: BorderRadius.all(Radius.circular(13.w)),
             border: Border.all(color: AppColors.primaryElement),
           ),
-          child: Image.asset("assets/icons/options.png"),
+          child: const Icon(Icons.settings_rounded),
+//          child: Image.asset("assets/icons/options.png"),
         ),
       ),
     ],

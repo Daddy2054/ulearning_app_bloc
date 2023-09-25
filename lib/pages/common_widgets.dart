@@ -32,7 +32,7 @@ Widget buildThirdPartyLogin(BuildContext context) {
       bottom: 20.h,
     ),
     padding: EdgeInsets.symmetric(
-      horizontal: 25.w,
+      horizontal: 50.w,
     ),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,

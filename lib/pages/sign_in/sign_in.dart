@@ -68,6 +68,9 @@ class _SignInState extends State<SignIn> {
                             height: 5.h,
                           ),
                           forgotPassword(),
+                               SizedBox(
+                            height: 60.h,
+                          ),
                           buildLogInAndRegButton('Log In', 'login', () {
                  //           print('login button');
                             SignInController(context: context)

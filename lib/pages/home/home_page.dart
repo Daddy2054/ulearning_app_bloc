@@ -24,7 +24,6 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-   
             homePageText(
               'hello',
               color: AppColors.primaryThirdElementText,
@@ -35,8 +34,11 @@ class _HomePageState extends State<HomePage> {
               color: AppColors.primaryText,
               top: 5,
             ),
-            SizedBox(height: 20,),
+            const SizedBox(
+              height: 20,
+            ),
             searchView(),
+            slidersView(),
           ],
         ),
       ),

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app_bloc/pages/profile/widgets/profile_widgets.dart';
 
-
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
 
@@ -31,13 +30,13 @@ class _ProfilePageState extends State<ProfilePage> {
               //   buildProfileName(state),
               //  //build row buttons
               //   buildRowView(context),
-              buildListView(context),
+              //      buildListView(context),
 
               //  // SizedBox(height: 30.h,),
-              //   Padding(
-              //     padding: EdgeInsets.only(left:25.w ),
-              //     child: buildListView(context),
-              //   ),
+              Padding(
+                padding: EdgeInsets.only(left: 25.w),
+                child: buildListView(context),
+              ),
             ],
           ),
         ),
@@ -45,4 +44,3 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 }
-

@@ -128,7 +128,7 @@ Widget slidersView(BuildContext context, HomePageState state) {
       ),
       DotsIndicator(
         dotsCount: 3,
-          position: state.index,
+        position: state.index,
         decorator: DotsDecorator(
           color: AppColors.primaryThirdElementText,
           activeColor: AppColors.primaryElement,
@@ -165,19 +165,22 @@ Widget menuView() {
   return Column(
     children: [
       Container(
-          width: 325.w,
-          margin: EdgeInsets.only(top: 15.h),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              // reusableText("Choose your course"),
-              Text("Choose your course"),
-              // GestureDetector(
+        width: 325.w,
+        margin: EdgeInsets.only(top: 15.h),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            // reusableText("Choose your course"),
+            const Text("Choose your course"),
+            GestureDetector(
               //     child: reusableText("See all",
-              //         color: AppColors.primaryThirdElementText, fontSize: 10)),
-            ],
-          )),
+              child: const Text("See all"),
+              //         color: AppColors.primaryThirdElementText, fontSize: 10)
+            ),
+          ],
+        ),
+      ),
       Container(
         margin: EdgeInsets.only(top: 20.w),
         child: Row(
@@ -207,6 +210,7 @@ Widget _reusableMenuText(String menuText,
         borderRadius: BorderRadius.circular(7.w),
         border: Border.all(color: backGroundColor)),
     padding: EdgeInsets.only(left: 15.w, right: 15.w, top: 5.h, bottom: 5.h),
+    child: Text(menuText),
     // child: reusableText(menuText,
     //     color: textColor, fontWeight: FontWeight.normal, fontSize: 11),
   );

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ulearning_app_bloc/pages/home/home_page.dart';
-import 'package:ulearning_app_bloc/pages/profile/widgets/profile.dart';
+import 'package:ulearning_app_bloc/pages/profile/profile.dart';
 
 Widget buildPage(int index) {
   List<Widget> widget = [

@@ -1,8 +1,12 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ulearning_app_bloc/pages/home/bloc/home_page_bloc.dart';
+import 'package:ulearning_app_bloc/pages/home/bloc/home_page_state.dart';
 
 import '../../../common/values/colors.dart';
+import '../bloc/home_page_event.dart';
 
 AppBar buildAppBar() {
   return AppBar(
@@ -103,7 +107,7 @@ Widget searchView() {
   );
 }
 
-Widget slidersView() {
+Widget slidersView(BuildContext context, HomePageState state) {
   return Column(
     children: [
       Container(
@@ -111,6 +115,10 @@ Widget slidersView() {
         width: 325.w,
         height: 160.h,
         child: PageView(
+          onPageChanged: (value) {
+            print(value.toString());
+            context.read<HomePageBloc>().add(HomePageDots(value));
+          },
           children: [
             _slidersContainer(path: "assets/icons/art.png"),
             _slidersContainer(path: "assets/icons/image_1.png"),
@@ -120,7 +128,7 @@ Widget slidersView() {
       ),
       DotsIndicator(
         dotsCount: 3,
-//          position: state.index.toDouble(),
+          position: state.index,
         decorator: DotsDecorator(
           color: AppColors.primaryThirdElementText,
           activeColor: AppColors.primaryElement,

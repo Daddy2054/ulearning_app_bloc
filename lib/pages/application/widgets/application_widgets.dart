@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ulearning_app_bloc/pages/home/home_page.dart';
+import 'package:ulearning_app_bloc/pages/profile/widgets/profile.dart';
 
 Widget buildPage(int index) {
   List<Widget> widget = [
@@ -7,7 +8,7 @@ Widget buildPage(int index) {
     const Text('Search'),
     const Text('Course'),
     const Text('chat'),
-    const Text('profile'),
+    const ProfilePage(),
   ];
 
   return widget[index];

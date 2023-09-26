@@ -70,8 +70,8 @@ class _HomePageState extends State<HomePage> {
                       childAspectRatio: 1.6,
                     ),
                     delegate: SliverChildBuilderDelegate(
-                        (BuildContext context, int index) {
-                      return GestureDetector(
+                      (BuildContext context, int index) {
+                        return GestureDetector(
                           onTap: () {
                             //   Navigator.of(context).pushNamed(
                             //       AppRoutes.COURSE_DETAIL,
@@ -80,38 +80,13 @@ class _HomePageState extends State<HomePage> {
                             //       }
                             //   );
                           },
-                          //          child: courseGrid(state.courseItem[index]),
-                          child: Container(
-                            decoration: const BoxDecoration(
-                              image: DecorationImage(
-                                fit: BoxFit.fill,
-                                image: AssetImage(
-                                  'assets/icons/image_1.png',
-                                ),
-                              ),
-                            ),
-                            child: Container(
-                              padding: EdgeInsets.all(12.w),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Container(
-                                    child: Text(
-                                      'Best course for IT',
-                                      style: TextStyle(
-                                        color: AppColors.primaryElementText,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 11.sp,
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ));
-                    }, childCount: 4
-                        //childCount: state.courseItem.length,
-                        ),
+                          child: courseGrid(),
+                          //     child: courseGrid(state.courseItem[index]),
+                        );
+                      },
+                      childCount: 4,
+                      //childCount: state.courseItem.length,
+                    ),
                   ),
                 ),
               ],

@@ -252,3 +252,52 @@ Widget reusableText(
     ),
   );
 }
+
+Widget courseGrid() {
+  return Container(
+    decoration: const BoxDecoration(
+      image: DecorationImage(
+        fit: BoxFit.fill,
+        image: AssetImage(
+          'assets/icons/image_2.png',
+        ),
+      ),
+    ),
+    child: Container(
+      padding: EdgeInsets.all(12.w),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Best course for IT',
+            maxLines: 1,
+            overflow: TextOverflow.fade,
+            textAlign: TextAlign.left,
+            softWrap: false,
+            style: TextStyle(
+              color: AppColors.primaryElementText,
+              fontWeight: FontWeight.bold,
+              fontSize: 11.sp,
+            ),
+          ),
+          SizedBox(
+            height: 5.h,
+          ),
+          Text(
+            'Best course for IT',
+            maxLines: 1,
+            overflow: TextOverflow.fade,
+            textAlign: TextAlign.left,
+            softWrap: false,
+            style: TextStyle(
+              color: AppColors.primaryFourthElementText,
+              fontWeight: FontWeight.normal,
+              fontSize: 8.sp,
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
+}

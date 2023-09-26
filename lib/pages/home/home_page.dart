@@ -27,25 +27,35 @@ class _HomePageState extends State<HomePage> {
               vertical: 0,
               horizontal: 25.w,
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                homePageText(
-                  'hello',
-                  color: AppColors.primaryThirdElementText,
-                  top: 20,
+            child: CustomScrollView(
+              //crossAxisAlignment: CrossAxisAlignment.start,
+              slivers: [
+                SliverToBoxAdapter(
+                  child: homePageText(
+                    'hello',
+                    color: AppColors.primaryThirdElementText,
+                    top: 20,
+                  ),
                 ),
-                homePageText(
-                  'James Bond',
-                  color: AppColors.primaryText,
-                  top: 5,
+                SliverToBoxAdapter(
+                  child: homePageText(
+                    'James Bond',
+                    color: AppColors.primaryText,
+                    top: 5,
+                  ),
                 ),
-                const SizedBox(
-                  height: 20,
+                SliverPadding(
+                  padding: EdgeInsets.only(top: 20.h),
                 ),
-                searchView(),
-                slidersView(context,state),
-             menuView(),
+                SliverToBoxAdapter(
+                  child: searchView(),
+                ),
+                SliverToBoxAdapter(
+                  child: slidersView(context, state),
+                ),
+                SliverToBoxAdapter(
+                  child: menuView(),
+                ),
               ],
             ),
           );

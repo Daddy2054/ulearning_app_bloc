@@ -171,12 +171,15 @@ Widget menuView() {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            const Text("Choose your course"),
-            // reusableText("Choose your course"),
+            //   const Text("Choose your course"),
+            reusableText("Choose your course"),
             GestureDetector(
-              child: const Text("See all"),
-              //     child: reusableText("See all",
-              //         color: AppColors.primaryThirdElementText, fontSize: 10)
+              //    child: const Text("See all"),
+              child: reusableText(
+                "See all",
+                color: AppColors.primaryThirdElementText,
+                fontSize: 10,
+              ),
             ),
           ],
         ),
@@ -224,8 +227,28 @@ Widget _reusableMenuText(
       top: 5.h,
       bottom: 5.h,
     ),
-    child: Text(menuText),
-    // child: reusableText(menuText,
-    //     color: textColor, fontWeight: FontWeight.normal, fontSize: 11),
+    // child: Text(menuText),
+    child: reusableText(
+      menuText,
+      color: textColor,
+      fontWeight: FontWeight.normal,
+      fontSize: 11,
+    ),
+  );
+}
+
+Widget reusableText(
+  String text, {
+  Color color = AppColors.primaryText,
+  double fontSize = 16,
+  FontWeight fontWeight = FontWeight.bold,
+}) {
+  return Text(
+    text,
+    style: TextStyle(
+      color: color,
+      fontWeight: fontWeight,
+      fontSize: fontSize.sp,
+    ),
   );
 }

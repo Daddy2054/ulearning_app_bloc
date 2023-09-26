@@ -56,6 +56,37 @@ class _HomePageState extends State<HomePage> {
                 SliverToBoxAdapter(
                   child: menuView(),
                 ),
+                SliverPadding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 18.h,
+                    horizontal: 0.w,
+                  ),
+                  sliver: SliverGrid(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 15,
+                      crossAxisSpacing: 15,
+                      childAspectRatio: 1.6,
+                    ),
+                    delegate: SliverChildBuilderDelegate(
+                      (BuildContext context, int index) {
+                        return GestureDetector(
+                            // onTap: () {
+                            //   Navigator.of(context).pushNamed(
+                            //       AppRoutes.COURSE_DETAIL,
+                            //       arguments: {
+                            //         "id":state.courseItem.elementAt(index).id,
+                            //       }
+                            //   );
+                            // },
+                            //          child: courseGrid(state.courseItem[index]),
+                            );
+                      },
+                      childCount: state.courseItem.length,
+                    ),
+                  ),
+                ),
               ],
             ),
           );

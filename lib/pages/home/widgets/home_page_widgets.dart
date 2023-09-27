@@ -1,4 +1,5 @@
 import 'package:dots_indicator/dots_indicator.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -116,7 +117,9 @@ Widget slidersView(BuildContext context, HomePageState state) {
         height: 160.h,
         child: PageView(
           onPageChanged: (value) {
-            print(value.toString());
+            if (kDebugMode) {
+              print(value.toString());
+            }
             context.read<HomePageBloc>().add(HomePageDots(value));
           },
           children: [

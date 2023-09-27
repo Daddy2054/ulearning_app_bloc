@@ -41,12 +41,10 @@ class _SettingsPageState extends State<SettingsPage> {
       body: SingleChildScrollView(
         child: BlocBuilder<SettingsBloc, SettingsState>(
           builder: (context, state) {
-            return Container(
-              child: Column(
-                children: [
-                  settingsButton(context, removeUserData),
-                ],
-              ),
+            return Column(
+              children: [
+                settingsButton(context, removeUserData),
+              ],
             );
           },
         ),

@@ -8,6 +8,8 @@ import '../../pages/application/application_page.dart';
 import '../../pages/application/bloc/app_bloc.dart';
 import '../../pages/home/bloc/home_page_bloc.dart';
 import '../../pages/home/home_page.dart';
+import '../../pages/profile/settings/bloc/settings_bloc.dart';
+import '../../pages/profile/settings/setting_page.dart';
 import '../../pages/register/bloc/register_bloc.dart';
 import '../../pages/register/register.dart';
 import '../../pages/sign_in/bloc/sign_in_bloc.dart';
@@ -52,6 +54,13 @@ class AppPages {
         page: const HomePage(),
         bloc: BlocProvider(
           create: (_) => HomePageBloc(),
+        ),
+      ),
+      PageEntity(
+        route: AppRoutes.SETTINGS,
+        page: const SettingsPage(),
+        bloc: BlocProvider(
+          create: (_) => SettingsBloc(),
         ),
       ),
     ];

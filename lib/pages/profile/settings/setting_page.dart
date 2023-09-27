@@ -1,5 +1,7 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'bloc/settings_bloc.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -11,6 +13,20 @@ class SettingsPage extends StatefulWidget {
 class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: BlocBuilder<SettingsBloc, SettingsState>(
+          builder: (context, state) {
+            return Container(
+              child: const Column(
+                children: [
+                  Text('hello world'),
+                ],
+              ),
+            );
+          },
+        ),
+      ),
+    );
   }
 }

@@ -14,6 +14,7 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: SingleChildScrollView(
         child: BlocBuilder<SettingsBloc, SettingsState>(
           builder: (context, state) {

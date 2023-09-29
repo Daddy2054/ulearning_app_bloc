@@ -45,9 +45,19 @@ class SignInController {
           var user = credential.user;
           if (user != null) {
             //we got verified user from firebase
+
             if (kDebugMode) {
               print('user exist');
             }
+            String? displayName = user.displayName;
+            String? email = user.email;
+            String? id = user.uid;
+            String? photoUrl = user.photoURL;
+
+            // if (kDebugMode) {
+            //   print('user open_id $id');
+            //   print('user photourl $photoUrl');
+            // }
             Global.storageService.setString(
               AppConstants.STORAGE_USER_TOKEN_KEY,
               '11111',

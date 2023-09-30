@@ -1,16 +1,15 @@
-import 'dart:convert';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:ulearning_app_bloc/common/entities/user.dart';
-import 'package:ulearning_app_bloc/common/values/constant.dart';
-import 'package:ulearning_app_bloc/common/widgets/flutter_toast.dart';
-import 'package:ulearning_app_bloc/global.dart';
-import 'package:ulearning_app_bloc/pages/sign_in/bloc/sign_in_bloc.dart';
+
+import '../../common/apis/user_api.dart';
+import '../../common/entities/user.dart';
+import '../../common/values/constant.dart';
+import '../../common/widgets/flutter_toast.dart';
+import '../../global.dart';
+import 'bloc/sign_in_bloc.dart';
 
 class SignInController {
   final BuildContext context;
@@ -67,11 +66,13 @@ class SignInController {
             //type 1 means email login
             loginRequestEntity.type = 1;
 
-            Global.storageService.setString(
-              AppConstants.STORAGE_USER_TOKEN_KEY,
-              '11111',
-            );
-            context2.pushNamedAndRemoveUntil('/application', (route) => false);
+            asyncPostAllData(loginRequestEntity);
+
+            // Global.storageService.setString(
+            //   AppConstants.STORAGE_USER_TOKEN_KEY,
+            //   '11111',
+            // );
+            // context2.pushNamedAndRemoveUntil('/application', (route) => false);
           } else {
             //error getting user from firebase
             toastInfo(msg: "Currently you are not a user of this app");
@@ -92,46 +93,46 @@ class SignInController {
         print(e.toString());
       }
     }
+  }
 
-    Future<void> asyncPostAllData(
-      LoginRequestEntity loginRequestEntity,
-    ) async {
-      EasyLoading.show(
-          indicator: const CircularProgressIndicator(),
-          maskType: EasyLoadingMaskType.clear,
-          dismissOnTap: true);
-      // var result = await UserAPI.login(
-      //   params: loginRequestEntity,
-      // );
-      // if (result.code == 200) {
-      //   try {
-      //     Global.storageService.setString(
-      //       AppConstants.STORAGE_USER_PROFILE_KEY,
-      //       jsonEncode(result.data!),
-      //     );
-      //     if (kDebugMode) {
-      //       print("......my token is ${result.data!.access_token!}.......");
-      //     }
-      //     //used for authorization
-      //     Global.storageService.setString(
-      //       AppConstants.STORAGE_USER_TOKEN_KEY,
-      //       result.data!.access_token!,
-      //     );
-      //     EasyLoading.dismiss();
+  Future<void> asyncPostAllData(
+    LoginRequestEntity loginRequestEntity,
+  ) async {
+    EasyLoading.show(
+        indicator: const CircularProgressIndicator(),
+        maskType: EasyLoadingMaskType.clear,
+        dismissOnTap: true);
+    var result = await UserAPI.login(
+      params: loginRequestEntity,
+    );
+    // if (result.code == 200) {
+    //   try {
+    //     Global.storageService.setString(
+    //       AppConstants.STORAGE_USER_PROFILE_KEY,
+    //       jsonEncode(result.data!),
+    //     );
+    //     if (kDebugMode) {
+    //       print("......my token is ${result.data!.access_token!}.......");
+    //     }
+    //     //used for authorization
+    //     Global.storageService.setString(
+    //       AppConstants.STORAGE_USER_TOKEN_KEY,
+    //       result.data!.access_token!,
+    //     );
+    //     EasyLoading.dismiss();
 
-      //     if (context.mounted) {
-      //       Navigator.of(context)
-      //           .pushNamedAndRemoveUntil("/application", (route) => false);
-      //     }
-      //   } catch (e) {
-      //     if (kDebugMode) {
-      //       print("saving local storage error ${e.toString()}");
-      //     }
-      //   }
-      // } else {
-      //   EasyLoading.dismiss();
-      //   toastInfo(msg: "unknown error");
-      // }
-    }
+    //     if (context.mounted) {
+    //       Navigator.of(context)
+    //           .pushNamedAndRemoveUntil("/application", (route) => false);
+    //     }
+    //   } catch (e) {
+    //     if (kDebugMode) {
+    //       print("saving local storage error ${e.toString()}");
+    //     }
+    //   }
+    // } else {
+    //   EasyLoading.dismiss();
+    //   toastInfo(msg: "unknown error");
+    // }
   }
 }

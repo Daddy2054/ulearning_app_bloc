@@ -29,12 +29,12 @@ String duTimeLineFormat(DateTime dt) {
   }
   // MM-dd
   else if (difference.inDays < 365) {
-    final dtFormat = new DateFormat('MM-dd', Platform.localeName);
+    final dtFormat = DateFormat('MM-dd', Platform.localeName);
     return dtFormat.format(dt);
   }
   // yyyy-MM-dd
   else {
-    final dtFormat = new DateFormat('yyyy-MM-dd', Platform.localeName);
+    final dtFormat = DateFormat('yyyy-MM-dd', Platform.localeName);
     var str = dtFormat.format(dt);
     return str;
   }

@@ -27,7 +27,7 @@ class HttpUtil {
       responseType: ResponseType.json,
     );
     dio = Dio(options);
-    (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+    (dio.httpClientAdapter as IOHttpClientAdapter).createHttpClient =
         (HttpClient client) {
       client.badCertificateCallback = (
         X509Certificate cert,
@@ -36,13 +36,15 @@ class HttpUtil {
       ) =>
           true;
       return client;
-    };
+    } as CreateHttpClient?;
   }
 
-  Future post(String path,
-      {dynamic mydata,
-      Map<String, dynamic>? queryParameters,
-      Options? options}) async {
+  Future post(
+    String path, {
+    dynamic mydata,
+    Map<String, dynamic>? queryParameters,
+    Options? options,
+  }) async {
     Options requestOptions = options ?? Options();
     requestOptions.headers = requestOptions.headers ?? {};
     Map<String, dynamic>? authorization = getAuthorizationHeader();
@@ -50,10 +52,12 @@ class HttpUtil {
       requestOptions.headers!.addAll(authorization);
     }
 
-    var response = await dio.post(path,
-        data: mydata,
-        queryParameters: queryParameters,
-        options: requestOptions);
+    var response = await dio.post(
+      path,
+      data: mydata,
+      queryParameters: queryParameters,
+      options: requestOptions,
+    );
 
     // print("my response is ${response.toString()}");
     // print("my status code is ${response.statusCode}");

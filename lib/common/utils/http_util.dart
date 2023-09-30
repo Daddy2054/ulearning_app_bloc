@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
+import 'package:flutter/foundation.dart';
 
 import '../../global.dart';
 import '../values/constant.dart';
@@ -16,28 +17,24 @@ class HttpUtil {
 
   late Dio dio;
 
-  HttpUtil._internal() {
-    //here we itnitialize things
+   HttpUtil._internal() {
     BaseOptions options = BaseOptions(
-      baseUrl: AppConstants.SERVER_API_URL,
-      connectTimeout: const Duration(seconds: 5),
-      receiveTimeout: const Duration(seconds: 5),
-      headers: {},
-      contentType: "application/json: charset=utf-8",
-      responseType: ResponseType.json,
-    );
+
+        baseUrl: AppConstants.SERVER_API_URL,
+        connectTimeout: const Duration(seconds: 5),
+        receiveTimeout: const Duration(seconds: 5),
+        headers: {},
+        contentType: "application/json: charset=utf-8",
+        responseType: ResponseType.json);
     dio = Dio(options);
-    (dio.httpClientAdapter as IOHttpClientAdapter).createHttpClient =
+    (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
         (HttpClient client) {
-      client.badCertificateCallback = (
-        X509Certificate cert,
-        String host,
-        int port,
-      ) =>
-          true;
+      client.badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
       return client;
-    } as CreateHttpClient?;
+    };
   }
+
 
   Future post(
     String path, {
@@ -59,8 +56,10 @@ class HttpUtil {
       options: requestOptions,
     );
 
-    // print("my response is ${response.toString()}");
-    // print("my status code is ${response.statusCode}");
+    if (kDebugMode) {
+      print("my response is ${response.toString()}");
+      print("my status code is ${response.statusCode}");
+    }
     return response.data;
   }
 

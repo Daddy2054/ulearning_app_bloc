@@ -1,3 +1,4 @@
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +32,7 @@ class SignInController {
           return;
         }
         try {
-          var context2 = Navigator.of(context);
+   //       var context2 = Navigator.of(context);
           final credential =
               await FirebaseAuth.instance.signInWithEmailAndPassword(
             email: emailAddress,
@@ -107,34 +108,34 @@ class SignInController {
     var result = await UserAPI.login(
       params: loginRequestEntity,
     );
-    // if (result.code == 200) {
-    //   try {
-    //     Global.storageService.setString(
-    //       AppConstants.STORAGE_USER_PROFILE_KEY,
-    //       jsonEncode(result.data!),
-    //     );
+    if (result.code == 200) {
+      try {
+        // Global.storageService.setString(
+        //   AppConstants.STORAGE_USER_PROFILE_KEY,
+        //   jsonEncode(result.data!),
+        // );
     //     if (kDebugMode) {
     //       print("......my token is ${result.data!.access_token!}.......");
     //     }
-    //     //used for authorization
-    //     Global.storageService.setString(
-    //       AppConstants.STORAGE_USER_TOKEN_KEY,
-    //       result.data!.access_token!,
-    //     );
-    //     EasyLoading.dismiss();
+        //used for authorization
+        Global.storageService.setString(
+          AppConstants.STORAGE_USER_TOKEN_KEY,
+          result.data!.access_token!,
+        );
+        EasyLoading.dismiss();
 
-    //     if (context.mounted) {
-    //       Navigator.of(context)
-    //           .pushNamedAndRemoveUntil("/application", (route) => false);
-    //     }
-    //   } catch (e) {
-    //     if (kDebugMode) {
-    //       print("saving local storage error ${e.toString()}");
-    //     }
-    //   }
-    // } else {
-    //   EasyLoading.dismiss();
-    //   toastInfo(msg: "unknown error");
-    // }
+        if (context.mounted) {
+          Navigator.of(context)
+              .pushNamedAndRemoveUntil("/application", (route) => false);
+        }
+      } catch (e) {
+        if (kDebugMode) {
+          print("saving local storage error ${e.toString()}");
+        }
+      }
+    } else {
+      EasyLoading.dismiss();
+      toastInfo(msg: "unknown error");
+    }
   }
 }

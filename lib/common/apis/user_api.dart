@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 
 import '../entities/user.dart';
 import '../utils/http_util.dart';
@@ -10,9 +9,9 @@ class UserAPI {
       'api/login',
       queryParameters: params?.toJson(),
     );
-    if (kDebugMode) {
-      print(response.toString());
-    }
+    // if (kDebugMode) {
+    //   print(response.toString());
+    // }
     return UserLoginResponseEntity.fromJson(response);
   }
 }

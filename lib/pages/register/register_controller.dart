@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ulearning_app_bloc/common/values/constant.dart';
 import 'package:ulearning_app_bloc/pages/register/bloc/register_bloc.dart';
 
 import '../../common/widgets/flutter_toast.dart';
@@ -37,7 +38,7 @@ class RegisterController {
     }
 
     try {
-    var context2 = Navigator.of(context); // how to jump async gap step 1
+      var context2 = Navigator.of(context); // how to jump async gap step 1
       final credential =
           await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,
@@ -47,15 +48,13 @@ class RegisterController {
       if (credential.user != null) {
         await credential.user?.sendEmailVerification();
         await credential.user?.updateDisplayName(userName);
-        String photoUrl = "uploads/default.png";
+        String photoUrl = "${AppConstants.SERVER_API_URL}uploads/default.png";
+//        String photoUrl = "uploads/default.png";
         await credential.user?.updatePhotoURL(photoUrl);
 
-        toastInfo(
-            msg:
-                """An email has been sent to your registered email. 
+        toastInfo(msg: """An email has been sent to your registered email. 
                 To activate it please check your email box 
-                and click on the link"""
-                );
+                and click on the link""");
         // Navigator.of(context).pop();
         (context2).pop(); // how to jump async gap step 2
       }

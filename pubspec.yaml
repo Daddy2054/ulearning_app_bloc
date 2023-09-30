@@ -21,6 +21,7 @@ dependencies:
   firebase_core: ^2.16.0
   fluttertoast: ^8.2.2
   shared_preferences: ^2.2.1
+  flutter_easyloading: ^3.0.5
 
 dev_dependencies:
   flutter_test:

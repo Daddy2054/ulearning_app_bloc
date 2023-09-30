@@ -1,7 +1,12 @@
+import 'dart:convert';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:ulearning_app_bloc/common/entities/user.dart';
 import 'package:ulearning_app_bloc/common/values/constant.dart';
 import 'package:ulearning_app_bloc/common/widgets/flutter_toast.dart';
 import 'package:ulearning_app_bloc/global.dart';
@@ -54,10 +59,14 @@ class SignInController {
             String? id = user.uid;
             String? photoUrl = user.photoURL;
 
-            // if (kDebugMode) {
-            //   print('user open_id $id');
-            //   print('user photourl $photoUrl');
-            // }
+            LoginRequestEntity loginRequestEntity = LoginRequestEntity();
+            loginRequestEntity.avatar = photoUrl;
+            loginRequestEntity.name = displayName;
+            loginRequestEntity.email = email;
+            loginRequestEntity.open_id = id;
+            //type 1 means email login
+            loginRequestEntity.type = 1;
+
             Global.storageService.setString(
               AppConstants.STORAGE_USER_TOKEN_KEY,
               '11111',
@@ -82,6 +91,47 @@ class SignInController {
       if (kDebugMode) {
         print(e.toString());
       }
+    }
+
+    Future<void> asyncPostAllData(
+      LoginRequestEntity loginRequestEntity,
+    ) async {
+      EasyLoading.show(
+          indicator: const CircularProgressIndicator(),
+          maskType: EasyLoadingMaskType.clear,
+          dismissOnTap: true);
+      // var result = await UserAPI.login(
+      //   params: loginRequestEntity,
+      // );
+      // if (result.code == 200) {
+      //   try {
+      //     Global.storageService.setString(
+      //       AppConstants.STORAGE_USER_PROFILE_KEY,
+      //       jsonEncode(result.data!),
+      //     );
+      //     if (kDebugMode) {
+      //       print("......my token is ${result.data!.access_token!}.......");
+      //     }
+      //     //used for authorization
+      //     Global.storageService.setString(
+      //       AppConstants.STORAGE_USER_TOKEN_KEY,
+      //       result.data!.access_token!,
+      //     );
+      //     EasyLoading.dismiss();
+
+      //     if (context.mounted) {
+      //       Navigator.of(context)
+      //           .pushNamedAndRemoveUntil("/application", (route) => false);
+      //     }
+      //   } catch (e) {
+      //     if (kDebugMode) {
+      //       print("saving local storage error ${e.toString()}");
+      //     }
+      //   }
+      // } else {
+      //   EasyLoading.dismiss();
+      //   toastInfo(msg: "unknown error");
+      // }
     }
   }
 }

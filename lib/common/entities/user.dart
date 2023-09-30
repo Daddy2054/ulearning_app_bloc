@@ -64,7 +64,9 @@ class UserItem {
   String? description;
   String? avatar;
   int? online;
-  int? type;
+  String? type;
+  
+  //int? type;
 
   UserItem({
     this.access_token,

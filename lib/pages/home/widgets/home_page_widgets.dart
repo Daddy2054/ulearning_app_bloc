@@ -3,13 +3,13 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ulearning_app_bloc/pages/home/bloc/home_page_bloc.dart';
-import 'package:ulearning_app_bloc/pages/home/bloc/home_page_state.dart';
 
 import '../../../common/values/colors.dart';
+import '../bloc/home_page_bloc.dart';
 import '../bloc/home_page_event.dart';
+import '../bloc/home_page_state.dart';
 
-AppBar buildAppBar() {
+AppBar buildAppBar(String avatar) {
   return AppBar(
     title: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -24,9 +24,9 @@ AppBar buildAppBar() {
           child: Container(
             width: 40.w,
             height: 40.h,
-            decoration: const BoxDecoration(
+            decoration:  BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/icons/person.png'),
+                image: NetworkImage(avatar),
               ),
             ),
           ),

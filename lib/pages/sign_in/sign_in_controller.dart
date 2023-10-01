@@ -1,4 +1,6 @@
 
+import 'dart:convert';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -110,10 +112,10 @@ class SignInController {
     );
     if (result.code == 200) {
       try {
-        // Global.storageService.setString(
-        //   AppConstants.STORAGE_USER_PROFILE_KEY,
-        //   jsonEncode(result.data!),
-        // );
+        Global.storageService.setString(
+          AppConstants.STORAGE_USER_PROFILE_KEY,
+          jsonEncode(result.data!),
+        );
     //     if (kDebugMode) {
     //       print("......my token is ${result.data!.access_token!}.......");
     //     }

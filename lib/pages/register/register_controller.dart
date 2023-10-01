@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ulearning_app_bloc/common/values/constant.dart';
 import 'package:ulearning_app_bloc/pages/register/bloc/register_bloc.dart';
 
 import '../../common/widgets/flutter_toast.dart';
@@ -48,7 +47,7 @@ class RegisterController {
       if (credential.user != null) {
         await credential.user?.sendEmailVerification();
         await credential.user?.updateDisplayName(userName);
-        String photoUrl = "${AppConstants.SERVER_API_URL}uploads/default.png";
+        String photoUrl = "uploads/default.png";
 //        String photoUrl = "uploads/default.png";
         await credential.user?.updatePhotoURL(photoUrl);
 

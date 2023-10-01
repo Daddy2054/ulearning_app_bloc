@@ -29,7 +29,9 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: buildAppBar(_homeController.userProfile.avatar.toString(),),
+      appBar: buildAppBar(
+        _homeController.userProfile.avatar.toString(),
+      ),
       body: BlocBuilder<HomePageBloc, HomePageState>(
         builder: (context, state) {
           return Container(
@@ -49,7 +51,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 SliverToBoxAdapter(
                   child: homePageText(
-                    _homeController.userProfile.name!,
+                    _homeController.userProfile.name ?? '',
                     color: AppColors.primaryText,
                     top: 5,
                   ),

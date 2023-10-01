@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../common/values/colors.dart';
+import '../../../common/values/constant.dart';
 import '../bloc/home_page_bloc.dart';
 import '../bloc/home_page_event.dart';
 import '../bloc/home_page_state.dart';
@@ -24,9 +25,11 @@ AppBar buildAppBar(String avatar) {
           child: Container(
             width: 40.w,
             height: 40.h,
-            decoration:  BoxDecoration(
+            decoration: BoxDecoration(
               image: DecorationImage(
-                image: NetworkImage(avatar),
+                image: NetworkImage(
+                  "${AppConstants.SERVER_API_URL}$avatar",
+                ),
               ),
             ),
           ),

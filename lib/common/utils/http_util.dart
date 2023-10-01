@@ -1,10 +1,6 @@
-import 'dart:io';
-
 import 'package:dio/dio.dart';
-import 'package:dio/io.dart';
 import 'package:flutter/foundation.dart';
 
-import '../../global.dart';
 import '../values/constant.dart';
 
 //singleton class
@@ -27,12 +23,12 @@ class HttpUtil {
         contentType: "application/json: charset=utf-8",
         responseType: ResponseType.json);
     dio = Dio(options);
-    (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
-        (HttpClient client) {
-      client.badCertificateCallback =
-          (X509Certificate cert, String host, int port) => true;
-      return client;
-    };
+    // (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+    //     (HttpClient client) {
+    //   client.badCertificateCallback =
+    //       (X509Certificate cert, String host, int port) => true;
+    //   return client;
+    // };
   }
 
 
@@ -40,20 +36,20 @@ class HttpUtil {
     String path, {
     dynamic mydata,
     Map<String, dynamic>? queryParameters,
-    Options? options,
+  //  Options? options,
   }) async {
-    Options requestOptions = options ?? Options();
-    requestOptions.headers = requestOptions.headers ?? {};
-    Map<String, dynamic>? authorization = getAuthorizationHeader();
-    if (authorization != null) {
-      requestOptions.headers!.addAll(authorization);
-    }
+    // Options requestOptions = options ?? Options();
+    // requestOptions.headers = requestOptions.headers ?? {};
+    // Map<String, dynamic>? authorization = getAuthorizationHeader();
+    // if (authorization != null) {
+    //   requestOptions.headers!.addAll(authorization);
+    // }
 
     var response = await dio.post(
       path,
       data: mydata,
       queryParameters: queryParameters,
-      options: requestOptions,
+ //     options: requestOptions,
     );
 
     if (kDebugMode) {
@@ -63,12 +59,12 @@ class HttpUtil {
     return response.data;
   }
 
-  Map<String, dynamic>? getAuthorizationHeader() {
-    var headers = <String, dynamic>{};
-    var accessToken = Global.storageService.getUserToken();
-    if (accessToken.isNotEmpty) {
-      headers['Authorization'] = 'Bearer $accessToken';
-    }
-    return headers;
-  }
+  // Map<String, dynamic>? getAuthorizationHeader() {
+  //   var headers = <String, dynamic>{};
+  //   var accessToken = Global.storageService.getUserToken();
+  //   if (accessToken.isNotEmpty) {
+  //     headers['Authorization'] = 'Bearer $accessToken';
+  //   }
+  //   return headers;
+  // }
 }

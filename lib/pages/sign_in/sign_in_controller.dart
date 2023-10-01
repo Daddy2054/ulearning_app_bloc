@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 
 import 'package:firebase_auth/firebase_auth.dart';
@@ -34,7 +33,7 @@ class SignInController {
           return;
         }
         try {
-   //       var context2 = Navigator.of(context);
+          //       var context2 = Navigator.of(context);
           final credential =
               await FirebaseAuth.instance.signInWithEmailAndPassword(
             email: emailAddress,
@@ -60,7 +59,7 @@ class SignInController {
             String? email = user.email;
             String? id = user.uid;
             String? photoUrl = user.photoURL;
-   if (kDebugMode) {
+            if (kDebugMode) {
               print('my url is $photoUrl');
             }
             LoginRequestEntity loginRequestEntity = LoginRequestEntity();
@@ -114,11 +113,13 @@ class SignInController {
       try {
         Global.storageService.setString(
           AppConstants.STORAGE_USER_PROFILE_KEY,
-          jsonEncode(result.data!),
+          jsonEncode(
+            result.data!,
+          ),
         );
-    //     if (kDebugMode) {
-    //       print("......my token is ${result.data!.access_token!}.......");
-    //     }
+        //     if (kDebugMode) {
+        //       print("......my token is ${result.data!.access_token!}.......");
+        //     }
         //used for authorization
         Global.storageService.setString(
           AppConstants.STORAGE_USER_TOKEN_KEY,

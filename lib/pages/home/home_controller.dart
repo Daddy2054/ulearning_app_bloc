@@ -6,7 +6,7 @@ import '../../global.dart';
 
 class HomeController {
   late BuildContext context;
-  UserItem get userProfile => Global.storageService.getUserProfile();
+  UserItem? get userProfile => Global.storageService.getUserProfile();
 
   static final HomeController _singleton = HomeController._external();
 

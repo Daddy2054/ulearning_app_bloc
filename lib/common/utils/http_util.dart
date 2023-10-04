@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
+import '../../global.dart';
 import '../values/constant.dart';
 
 //singleton class
@@ -13,9 +14,8 @@ class HttpUtil {
 
   late Dio dio;
 
-   HttpUtil._internal() {
+  HttpUtil._internal() {
     BaseOptions options = BaseOptions(
-
         baseUrl: AppConstants.SERVER_API_URL,
         connectTimeout: const Duration(seconds: 5),
         receiveTimeout: const Duration(seconds: 5),
@@ -31,25 +31,24 @@ class HttpUtil {
     // };
   }
 
-
   Future post(
     String path, {
     dynamic mydata,
     Map<String, dynamic>? queryParameters,
-  //  Options? options,
+    Options? options,
   }) async {
-    // Options requestOptions = options ?? Options();
-    // requestOptions.headers = requestOptions.headers ?? {};
-    // Map<String, dynamic>? authorization = getAuthorizationHeader();
-    // if (authorization != null) {
-    //   requestOptions.headers!.addAll(authorization);
-    // }
+    Options requestOptions = options ?? Options();
+    requestOptions.headers = requestOptions.headers ?? {};
+    Map<String, dynamic>? authorization = getAuthorizationHeader();
+    if (authorization != null) {
+      requestOptions.headers!.addAll(authorization);
+    }
 
     var response = await dio.post(
       path,
       data: mydata,
       queryParameters: queryParameters,
- //     options: requestOptions,
+      options: requestOptions,
     );
 
     if (kDebugMode) {
@@ -59,12 +58,12 @@ class HttpUtil {
     return response.data;
   }
 
-  // Map<String, dynamic>? getAuthorizationHeader() {
-  //   var headers = <String, dynamic>{};
-  //   var accessToken = Global.storageService.getUserToken();
-  //   if (accessToken.isNotEmpty) {
-  //     headers['Authorization'] = 'Bearer $accessToken';
-  //   }
-  //   return headers;
-  // }
+  Map<String, dynamic>? getAuthorizationHeader() {
+    var headers = <String, dynamic>{};
+    var accessToken = Global.storageService.getUserToken();
+    if (accessToken.isNotEmpty) {
+      headers['Authorization'] = 'Bearer $accessToken';
+    }
+    return headers;
+  }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import '../../common/apis/course_api.dart';
 import '../../common/entities/entities.dart';
 import '../../global.dart';
 
@@ -23,7 +24,8 @@ class HomeController {
       print('...home controller init method');
     }
     //  if(Global.storageService.getUserToken().isNotEmpty){
-    //    var result = await CourseAPI.courseList();
+    //    var result = 
+    await CourseAPI.courseList();
     //    if(result.code==200){
     //      if(context.mounted){
     //        context.read<HomePageBlocs>().add(HomePageCourseItem(result.data!));

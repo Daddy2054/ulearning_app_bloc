@@ -120,7 +120,7 @@ class SignInController {
         //     if (kDebugMode) {
         //       print("......my token is ${result.data!.access_token!}.......");
         //     }
-        //used for authorization
+        //used for authorization, that's why we saved it
         Global.storageService.setString(
           AppConstants.STORAGE_USER_TOKEN_KEY,
           result.data!.access_token!,

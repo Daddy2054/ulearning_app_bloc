@@ -24,17 +24,22 @@ class HomeController {
       print('...home controller init method');
     }
     //  if(Global.storageService.getUserToken().isNotEmpty){
-    //    var result = 
-    await CourseAPI.courseList();
-    //    if(result.code==200){
-    //      if(context.mounted){
-    //        context.read<HomePageBlocs>().add(HomePageCourseItem(result.data!));
-    //         return;
-    //      }
-    //    }else{
-    //      print(result.code);
-    //      return;
-    //    }
+    var result = await CourseAPI.courseList();
+    if (result.code == 200) {
+      //      if(context.mounted){
+      //        context.read<HomePageBlocs>().add(HomePageCourseItem(result.data!));
+      //         return;
+      //      }
+      if (kDebugMode) {
+        print('perfect');
+        print(result.data![0].description);
+      }
+    } else {
+      if (kDebugMode) {
+        print(result.code);
+      }
+      return;
+    }
     //  }else{
     //    print("User has already logged out");
     //  }

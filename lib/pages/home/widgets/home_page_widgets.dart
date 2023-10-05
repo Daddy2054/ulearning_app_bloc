@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ulearning_app_bloc/common/entities/course.dart';
 
 import '../../../common/values/colors.dart';
 import '../../../common/values/constant.dart';
@@ -259,7 +260,7 @@ Widget reusableText(
   );
 }
 
-Widget courseGrid() {
+Widget courseGrid(CourseItem item) {
   return Container(
     decoration: const BoxDecoration(
       image: DecorationImage(
@@ -276,7 +277,7 @@ Widget courseGrid() {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Best course for IT',
+            item.name??'',
             maxLines: 1,
             overflow: TextOverflow.fade,
             textAlign: TextAlign.left,
@@ -291,7 +292,7 @@ Widget courseGrid() {
             height: 5.h,
           ),
           Text(
-            'Best course for IT',
+            item.description??'',
             maxLines: 1,
             overflow: TextOverflow.fade,
             textAlign: TextAlign.left,

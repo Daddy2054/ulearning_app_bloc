@@ -1,9 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../common/apis/course_api.dart';
 import '../../common/entities/entities.dart';
 import '../../global.dart';
+import 'bloc/home_page_bloc.dart';
+import 'bloc/home_page_event.dart';
 
 class HomeController {
   late BuildContext context;
@@ -23,26 +26,31 @@ class HomeController {
     if (kDebugMode) {
       print('...home controller init method');
     }
-    //  if(Global.storageService.getUserToken().isNotEmpty){
-    var result = await CourseAPI.courseList();
-    if (result.code == 200) {
-      //      if(context.mounted){
-      //        context.read<HomePageBlocs>().add(HomePageCourseItem(result.data!));
-      //         return;
-      //      }
-      if (kDebugMode) {
-        print('perfect');
-        print(result.data![0].description);
+    //make sure the user is logged in and then make an api call
+    if (Global.storageService.getUserToken().isNotEmpty) {
+      var result = await CourseAPI.courseList();
+      if (result.code == 200) {
+        if (context.mounted) {
+          context.read<HomePageBloc>().add(
+                HomePageCourseItem(result.data!),
+              );
+          return;
+        }
+        if (kDebugMode) {
+          print('perfect');
+          print(result.data![0].description);
+        }
+      } else {
+        if (kDebugMode) {
+          print(result.code);
+        }
+        return;
       }
     } else {
       if (kDebugMode) {
-        print(result.code);
+        print("User has already logged out");
       }
-      return;
     }
-    //  }else{
-    //    print("User has already logged out");
-    //  }
     return;
   }
 }

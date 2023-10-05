@@ -1,12 +1,13 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../common/values/colors.dart';
-import 'home_controller.dart';
-import 'widgets/home_page_widgets.dart';
 
+import '../../common/values/colors.dart';
 import 'bloc/home_page_bloc.dart';
 import 'bloc/home_page_state.dart';
+import 'home_controller.dart';
+import 'widgets/home_page_widgets.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -36,6 +37,13 @@ class _HomePageState extends State<HomePage> {
             ),
             body: BlocBuilder<HomePageBloc, HomePageState>(
               builder: (context, state) {
+                if (state.courseItem.isEmpty) {
+                  return Container();
+    //              HomeController(context: context).init();
+                }
+                if (kDebugMode) {
+                  print(state.courseItem[1].name ?? '');
+                }
                 return Container(
                   margin: EdgeInsets.symmetric(
                     vertical: 0,
@@ -94,11 +102,11 @@ class _HomePageState extends State<HomePage> {
                                   //       }
                                   //   );
                                 },
-                                child: courseGrid(),
-                                //     child: courseGrid(state.courseItem[index]),
+                                //child: courseGrid(),
+                                child: courseGrid(state.courseItem[index]),
                               );
                             },
-                            childCount: 4,
+                            childCount: state.courseItem.length,
                             //childCount: state.courseItem.length,
                           ),
                         ),

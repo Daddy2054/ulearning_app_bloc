@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:ulearning_app_bloc/pages/home/home_controller.dart';
 
 import '../../common/apis/user_api.dart';
 import '../../common/entities/user.dart';
@@ -59,9 +60,9 @@ class SignInController {
             String? email = user.email;
             String? id = user.uid;
             String? photoUrl = user.photoURL;
-            if (kDebugMode) {
-              print('my url is $photoUrl');
-            }
+            // if (kDebugMode) {
+            //   print('my url is $photoUrl');
+            // }
             LoginRequestEntity loginRequestEntity = LoginRequestEntity();
             loginRequestEntity.avatar = photoUrl;
             loginRequestEntity.name = displayName;
@@ -69,14 +70,14 @@ class SignInController {
             loginRequestEntity.open_id = id;
             //type 1 means email login
             loginRequestEntity.type = 1;
+            if (kDebugMode) {
+              print('user exist');
+            }
+            await asyncPostAllData(loginRequestEntity);
 
-            asyncPostAllData(loginRequestEntity);
-
-            // Global.storageService.setString(
-            //   AppConstants.STORAGE_USER_TOKEN_KEY,
-            //   '11111',
-            // );
-            // context2.pushNamedAndRemoveUntil('/application', (route) => false);
+            if (context.mounted) {
+              await HomeController(context: context).init();
+            }
           } else {
             //error getting user from firebase
             toastInfo(msg: "Currently you are not a user of this app");

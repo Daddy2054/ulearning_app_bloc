@@ -36,10 +36,10 @@ class HomeController {
               );
           return;
         }
-        if (kDebugMode) {
-          print('perfect');
-          print(result.data![0].description);
-        }
+        // if (kDebugMode) {
+        //   print('perfect');
+        //   print(result.data![0].description);
+        // }
       } else {
         if (kDebugMode) {
           print(result.code);

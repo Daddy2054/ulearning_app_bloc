@@ -1,6 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import '../../../common/widgets/base_text_widget.dart';
+
 class CourseDetail extends StatefulWidget {
   const CourseDetail({super.key});
 
@@ -9,7 +11,7 @@ class CourseDetail extends StatefulWidget {
 }
 
 class _CourseDetailState extends State<CourseDetail> {
-  late Map<dynamic, dynamic> id ;
+  late Map<dynamic, dynamic> id;
   @override
   void initState() {
     super.initState();
@@ -29,7 +31,12 @@ class _CourseDetailState extends State<CourseDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Text(id.values.toString(),),),
+      appBar: buildAppBar("Course detail"),
+      body: Center(
+        child: Text(
+          id.values.toString(),
+        ),
+      ),
     );
   }
 }

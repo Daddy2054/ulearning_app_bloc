@@ -262,11 +262,11 @@ Widget reusableText(
 
 Widget courseGrid(CourseItem item) {
   return Container(
-    decoration: const BoxDecoration(
+    decoration: BoxDecoration(
       image: DecorationImage(
         fit: BoxFit.fill,
-        image: AssetImage(
-          'assets/icons/image_2.png',
+        image: NetworkImage(
+          AppConstants.SERVER_UPLOADS + item.thumbnail!,
         ),
       ),
     ),
@@ -277,7 +277,7 @@ Widget courseGrid(CourseItem item) {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            item.name??'',
+            item.name ?? '',
             maxLines: 1,
             overflow: TextOverflow.fade,
             textAlign: TextAlign.left,
@@ -292,7 +292,7 @@ Widget courseGrid(CourseItem item) {
             height: 5.h,
           ),
           Text(
-            item.description??'',
+            item.description ?? '',
             maxLines: 1,
             overflow: TextOverflow.fade,
             textAlign: TextAlign.left,

@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ulearning_app_bloc/pages/course/course_detail/bloc/course_detail_states.dart';
 import 'package:ulearning_app_bloc/pages/course/course_detail/widgets/course_detail_widgets.dart';
 
 import '../../../common/values/colors.dart';

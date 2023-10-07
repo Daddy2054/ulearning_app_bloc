@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../common/widgets/base_text_widget.dart';
 
@@ -30,12 +31,40 @@ class _CourseDetailState extends State<CourseDetail> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: buildAppBar("Course detail"),
-      body: Center(
-        child: Text(
-          id.values.toString(),
-        ),
+    return Container(
+      color: Colors.white,
+      child: SafeArea(
+        child: Scaffold(
+            backgroundColor: Colors.white,
+            appBar: buildAppBar("Course detail"),
+            body: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      vertical: 15.h,
+                      horizontal: 25.w,
+                    ),
+                    child: Column(
+                      children: [
+                        Container(
+                          width: 325.w,
+                          height: 200.h,
+                          decoration: const BoxDecoration(
+                            image: DecorationImage(
+                              fit: BoxFit.fitWidth,
+                              image: AssetImage(
+                                "assets/icons/image_1.png",
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            )),
       ),
     );
   }

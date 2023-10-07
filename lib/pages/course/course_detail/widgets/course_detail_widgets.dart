@@ -22,21 +22,22 @@ Widget thumbNail(String thumbnail) {
 }
 
 
-Widget menuView(BuildContext context, CourseDetailStates state) {
+Widget menuView(BuildContext context) {
+//Widget menuView(BuildContext context, CourseDetailStates state) {
   return SizedBox(
     width: 325.w,
     child: Row(
       children: [
         GestureDetector(
           onTap: () {
-            Navigator.of(context).pushNamed(AppRoutes.CONTRIBUTOR,
-              //this token to verify the person's identity
-                //this is course creators token
-              arguments: {
-                "token": state.courseItem!.user_token
-              }
+          //   Navigator.of(context).pushNamed(AppRoutes.CONTRIBUTOR,
+          //     //this token to verify the person's identity
+          //       //this is course creators token
+          //     arguments: {
+          //       "token": state.courseItem!.user_token
+       //       }
 
-            );
+         //   );
           },
           child: Container(
               padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 5.h),

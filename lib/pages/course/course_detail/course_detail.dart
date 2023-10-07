@@ -1,6 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ulearning_app_bloc/pages/course/course_detail/bloc/course_detail_states.dart';
+import 'package:ulearning_app_bloc/pages/course/course_detail/widgets/course_detail_widgets.dart';
 
 import '../../../common/widgets/base_text_widget.dart';
 
@@ -47,18 +49,14 @@ class _CourseDetailState extends State<CourseDetail> {
                     ),
                     child: Column(
                       children: [
-                        Container(
-                          width: 325.w,
-                          height: 200.h,
-                          decoration: const BoxDecoration(
-                            image: DecorationImage(
-                              fit: BoxFit.fitWidth,
-                              image: AssetImage(
-                                "assets/icons/image_1.png",
-                              ),
-                            ),
-                          ),
-                        )
+                        thumbNail(
+                          'images/86b887e108e25d8b4afb4c2d93b61b3c.jpeg',
+                        ),
+//                        menuView(context, CourseDetailStates state)
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        menuView(context),
                       ],
                     ),
                   ),

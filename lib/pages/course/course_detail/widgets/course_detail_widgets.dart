@@ -1,4 +1,5 @@
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -105,7 +106,7 @@ Widget courseSummaryView(BuildContext context, CourseDetailStates state) {
       ...List.generate(
         imagesInfo.length,
         (index) => GestureDetector(
-          onTap: () => null,
+          onTap: () {},
           child: Container(
             margin: EdgeInsets.only(top: 15.h),
             child: Row(
@@ -146,7 +147,9 @@ Widget courseLessonList(CourseDetailStates state) {
         shrinkWrap: true,
         itemCount: state.lessonItem.length,
         itemBuilder: (context, index){
-          print('---my image path is ${state.lessonItem[index].thumbnail!}----');
+          if (kDebugMode) {
+            print('---my image path is ${state.lessonItem[index].thumbnail!}----');
+          }
       return Container(
         margin: EdgeInsets.only(top: 10.h),
         width: 325.w,
@@ -206,12 +209,10 @@ Widget courseLessonList(CourseDetailStates state) {
                 ],
               ),
               //for showing the right arrow
-              Container(
-                child: Image(
-                  height: 24.h,
-                  width: 24.h,
-                  image: AssetImage("assets/icons/arrow_right.png"),
-                ),
+              Image(
+                height: 24.h,
+                width: 24.h,
+                image: const AssetImage("assets/icons/arrow_right.png"),
               )
             ],
           ),

@@ -1,6 +1,6 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ulearning_app_bloc/pages/course/course_detail/course_detail_controller.dart';
 import 'package:ulearning_app_bloc/pages/course/course_detail/widgets/course_detail_widgets.dart';
 
 import '../../../common/values/colors.dart';
@@ -14,7 +14,8 @@ class CourseDetail extends StatefulWidget {
 }
 
 class _CourseDetailState extends State<CourseDetail> {
-  late Map<dynamic, dynamic> id;
+  // late Map<dynamic, dynamic> id;
+  late CourseDetailController _courseDetailController;
   @override
   void initState() {
     super.initState();
@@ -23,12 +24,14 @@ class _CourseDetailState extends State<CourseDetail> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    id = ModalRoute.of(context)!.settings.arguments as Map;
-    if (kDebugMode) {
-      print(
-        id.values.toString(),
-      );
-    }
+    // id = ModalRoute.of(context)!.settings.arguments as Map;
+    // if (kDebugMode) {
+    //   print(
+    //     id.values.toString(),
+    //   );
+    // }
+    _courseDetailController = CourseDetailController(context: context);
+    _courseDetailController.init();
   }
 
   @override
@@ -66,30 +69,37 @@ class _CourseDetailState extends State<CourseDetail> {
                           height: 15,
                         ),
                         reusableText(
-                            'Course Description Course Description Course Description Course Description Course Description Course Description Course Description ',
-                            color: AppColors.primaryThirdElementText,
-                            fontWeight: FontWeight.normal,
-                            fontSize: 11.sp,),
-                               //course buy button
-                            GestureDetector(
-                              onTap: (){
-                       //         _courseDetailController.goBuy(state.courseItem!.id);
-                              },
-                              child: appPrimaryButton("Go buy"),
-                            ),
+                          'Course Description Course Description Course Description Course Description Course Description Course Description Course Description ',
+                          color: AppColors.primaryThirdElementText,
+                          fontWeight: FontWeight.normal,
+                          fontSize: 11.sp,
+                        ),
+                        //course buy button
+                        GestureDetector(
+                          onTap: () {
+                            //         _courseDetailController.goBuy(state.courseItem!.id);
+                          },
+                          child: appPrimaryButton("Go buy"),
+                        ),
 
-                            SizedBox(height: 20.h,),
-                            //course summary title
-                            courseSummaryTitle(),
+                        SizedBox(
+                          height: 20.h,
+                        ),
+                        //course summary title
+                        courseSummaryTitle(),
 
-                            //course summary in list
-                         //   courseSummaryView(context, state),
-                            SizedBox(height: 20.h,),
-                            //Lesson list title
-                            reusableText("Lesson List"),
-                            SizedBox(height: 20.h,),
-                            //Course lesson list
-                            //courseLessonList(state)
+                        //course summary in list
+                        //   courseSummaryView(context, state),
+                        SizedBox(
+                          height: 20.h,
+                        ),
+                        //Lesson list title
+                        reusableText("Lesson List"),
+                        SizedBox(
+                          height: 20.h,
+                        ),
+                        //Course lesson list
+                        //courseLessonList(state)
                       ],
                     ),
                   ),

@@ -46,7 +46,7 @@ class CourseAPI {
       'api/courseDetail',
       queryParameters: params?.toJson(),
     );
-    print(response.toString());
+   // print(response.toString());
     return CourseDetailResponseEntity.fromJson(response);
   }
 

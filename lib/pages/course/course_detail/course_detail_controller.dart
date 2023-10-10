@@ -56,7 +56,7 @@ class CourseDetailController {
       //cleaner format of url
       var url = Uri.decodeFull(result.data!);
 
-      print('------my returned stripe url is $url------------------------');
+      //print('------my returned stripe url is $url');
       // var res = await Navigator.of(context)
       //     .pushNamed(AppRoutes.PAY_WEB_VIEW, arguments: {"url": url});
 

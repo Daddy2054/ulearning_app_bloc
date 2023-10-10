@@ -23,6 +23,7 @@ dependencies:
   shared_preferences: ^2.2.1
   flutter_easyloading: ^3.0.5
   dio: ^5.3.3
+  webview_flutter: ^3.0.1
 
 dev_dependencies:
   flutter_test:

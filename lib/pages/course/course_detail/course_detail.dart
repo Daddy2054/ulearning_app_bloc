@@ -95,7 +95,8 @@ class _CourseDetailState extends State<CourseDetail> {
                                   //course buy button
                                   GestureDetector(
                                     onTap: () {
-                                      //         _courseDetailController.goBuy(state.courseItem!.id);
+                                      _courseDetailController
+                                          .goBuy(state.courseItem!.id);
                                     },
                                     child: appPrimaryButton("Go buy"),
                                   ),

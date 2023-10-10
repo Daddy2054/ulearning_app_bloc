@@ -38,85 +38,94 @@ class _CourseDetailState extends State<CourseDetail> {
 
   @override
   Widget build(BuildContext context) {
+    int i = 0;
+    print('------my build method------');
     return BlocBuilder<CourseDetailBloc, CourseDetailStates>(
       builder: (context, state) {
-        print('course id ${state.courseItem!.id}');
-        print('myitems ${state.courseItem!.toString()}');
-        print('description ${state.courseItem!.description.toString()}');
-        return Container(
-          color: Colors.white,
-          child: SafeArea(
-            child: Scaffold(
-                backgroundColor: Colors.white,
-                appBar: buildAppBar("Course detail"),
-                body: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                          vertical: 15.h,
-                          horizontal: 25.w,
-                        ),
+        // print('course id ${state.courseItem!.id}');
+        // print('myitems ${state.courseItem!.toString()}');
+        // print('description ${state.courseItem!.description.toString()}');
+        print('-----state is called ${++i} times');
+        return state.courseItem == null
+            ? const Center(
+                child: CircularProgressIndicator(
+                  backgroundColor: Colors.blue,
+                ),
+              )
+            : Container(
+                color: Colors.white,
+                child: SafeArea(
+                  child: Scaffold(
+                      backgroundColor: Colors.white,
+                      appBar: buildAppBar("Course detail"),
+                      body: SingleChildScrollView(
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            thumbNail(
-                              //         'images/86b887e108e25d8b4afb4c2d93b61b3c.jpeg',
-                              state.courseItem!.thumbnail.toString(),
-                            ),
-                            //                        menuView(context, CourseDetailStates state)
-                            const SizedBox(
-                              height: 15,
-                            ),
-                            menuView(context),
-                            const SizedBox(
-                              height: 15,
-                            ),
-                            reusableText('Course Description'),
-                            const SizedBox(
-                              height: 15,
-                            ),
-                            descriptionText(
-                              // 'Course Description Course Description Course Description Course Description Course Description Course Description Course Description ',
-                              state.courseItem!.description.toString(),
-                            ),
-                            const SizedBox(
-                              height: 15,
-                            ),
-                            //course buy button
-                            GestureDetector(
-                              onTap: () {
-                                //         _courseDetailController.goBuy(state.courseItem!.id);
-                              },
-                              child: appPrimaryButton("Go buy"),
-                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                vertical: 15.h,
+                                horizontal: 25.w,
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  thumbNail(
+                                    //         'images/86b887e108e25d8b4afb4c2d93b61b3c.jpeg',
+                                    state.courseItem!.thumbnail.toString(),
+                                  ),
+                                  //                        menuView(context, CourseDetailStates state)
+                                  const SizedBox(
+                                    height: 15,
+                                  ),
+                                  menuView(context),
+                                  const SizedBox(
+                                    height: 15,
+                                  ),
+                                  reusableText('Course Description'),
+                                  const SizedBox(
+                                    height: 15,
+                                  ),
+                                  descriptionText(
+                                    // 'Course Description Course Description Course Description Course Description Course Description Course Description Course Description ',
+                                    state.courseItem!.description.toString(),
+                                  ),
+                                  const SizedBox(
+                                    height: 15,
+                                  ),
+                                  //course buy button
+                                  GestureDetector(
+                                    onTap: () {
+                                      //         _courseDetailController.goBuy(state.courseItem!.id);
+                                    },
+                                    child: appPrimaryButton("Go buy"),
+                                  ),
 
-                            SizedBox(
-                              height: 20.h,
-                            ),
-                            //course summary title
-                            courseSummaryTitle(),
+                                  SizedBox(
+                                    height: 20.h,
+                                  ),
+                                  //course summary title
+                                  courseSummaryTitle(),
 
-                            //course summary in list
-                            courseSummaryView(context, state),
-                            SizedBox(
-                              height: 20.h,
+                                  //course summary in list
+                                  courseSummaryView(context, state),
+                                  SizedBox(
+                                    height: 20.h,
+                                  ),
+                                  //Lesson list title
+                                  reusableText("Lesson List"),
+                                  SizedBox(
+                                    height: 20.h,
+                                  ),
+                                  //Course lesson list
+                                  //courseLessonList(state)
+                                ],
+                              ),
                             ),
-                            //Lesson list title
-                            reusableText("Lesson List"),
-                            SizedBox(
-                              height: 20.h,
-                            ),
-                            //Course lesson list
-                            //courseLessonList(state)
                           ],
                         ),
-                      ),
-                    ],
-                  ),
-                )),
-          ),
-        );
+                      )),
+                ),
+              );
       },
     );
   }

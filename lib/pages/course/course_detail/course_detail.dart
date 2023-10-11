@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -39,13 +40,17 @@ class _CourseDetailState extends State<CourseDetail> {
   @override
   Widget build(BuildContext context) {
     int i = 0;
-    print('------my build method------');
+    if (kDebugMode) {
+      print('------my build method------');
+    }
     return BlocBuilder<CourseDetailBloc, CourseDetailStates>(
       builder: (context, state) {
         // print('course id ${state.courseItem!.id}');
         // print('myitems ${state.courseItem!.toString()}');
         // print('description ${state.courseItem!.description.toString()}');
-        print('-----state is called ${++i} times');
+        if (kDebugMode) {
+          print('-----state is called ${++i} times');
+        }
         return state.courseItem == null
             ? const Center(
                 child: CircularProgressIndicator(

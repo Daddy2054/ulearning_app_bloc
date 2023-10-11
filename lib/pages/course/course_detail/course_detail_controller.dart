@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -30,10 +31,14 @@ class CourseDetailController {
 
     if (result.code == 200) {
       if (context.mounted) {
-        print('---------context is ready------');
+        if (kDebugMode) {
+          print('---------context is ready------');
+        }
         context.read<CourseDetailBloc>().add(TriggerCourseDetail(result.data!));
       } else {
-        print('-------context is not available-------');
+        if (kDebugMode) {
+          print('-------context is not available-------');
+        }
       }
     } else {
       toastInfo(
@@ -42,7 +47,9 @@ class CourseDetailController {
   }
 
   Future<void> goBuy(int? id) async {
-    print('-----course is is $id');
+    if (kDebugMode) {
+      print('-----course is is $id');
+    }
     EasyLoading.show(
         indicator: const CircularProgressIndicator(),
         maskType: EasyLoadingMaskType.clear,
@@ -57,14 +64,18 @@ class CourseDetailController {
       //cleaner format of url
       var url = Uri.decodeFull(result.data!);
 
-    //  print('------my returned stripe url is $url');
-      var res = await Navigator.of(context)
-          .pushNamed(AppRoutes.PAY_WEB_VIEW, arguments: {"url": url});
+      //  print('------my returned stripe url is $url');
+      if (context.mounted) {
+        var res = await Navigator.of(context)
+            .pushNamed(AppRoutes.PAY_WEB_VIEW, arguments: {"url": url});
 
-      // if (res == "success") {
-      //   toastInfo(msg: "You bought it successfully");
-      // }
-      // print('----my returned stripe url is $url--------');
+        if (res == "success") {
+          toastInfo(msg: "You bought it successfully");
+        }
+        if (kDebugMode) {
+          print('----my returned stripe url is $url--------');
+        }
+      }
     } else {
       toastInfo(msg: result.msg!);
     }

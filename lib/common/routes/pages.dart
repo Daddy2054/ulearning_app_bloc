@@ -2,6 +2,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ulearning_app_bloc/pages/course/paywebview/bloc/payview_blocs.dart';
+import 'package:ulearning_app_bloc/pages/course/paywebview/paywebview.dart';
 
 import '../../global.dart';
 import '../../pages/application/application_page.dart';
@@ -65,11 +67,18 @@ class AppPages {
           create: (_) => SettingsBloc(),
         ),
       ),
-       PageEntity(
+      PageEntity(
           route: AppRoutes.COURSE_DETAIL,
           page: const CourseDetail(),
-          bloc: BlocProvider(create: (_)=>CourseDetailBloc(),)
-      ),
+          bloc: BlocProvider(
+            create: (_) => CourseDetailBloc(),
+          )),
+      PageEntity(
+          route: AppRoutes.PAY_WEB_VIEW,
+          page: const PayWebView(),
+          bloc: BlocProvider(
+            create: (_) => PayWebViewBlocs(),
+          )),
     ];
   }
 

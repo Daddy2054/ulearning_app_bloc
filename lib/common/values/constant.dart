@@ -2,7 +2,8 @@
 
 class AppConstants {
   static const String SERVER_API_URL =
-      "https://dd7a-95-174-64-246.ngrok-free.app/";
+"https://9289-146-70-182-92.ngrok-free.app/";
+//      "https://dd7a-95-174-64-246.ngrok-free.app/";
   //https://42d6-158-148-62-206.ngrok-free.app/
   //phome mobile internet hotspot
   //static const String SERVER_API_URL = "http://172.20.10.12:8000/";
